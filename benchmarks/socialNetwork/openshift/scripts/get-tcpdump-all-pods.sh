@@ -30,4 +30,4 @@ echo "Deleting all ksniff pods...."
 oc delete pods -l app=ksniff
 sleep 30
 mergecap -w tcpData/final-output.pcap tcpData/*.pcap
-wireshark tcpData/final-output.pcap
+python read-pcap-file.py
