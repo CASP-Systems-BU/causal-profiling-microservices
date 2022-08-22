@@ -74,3 +74,5 @@ spec:
         - name: JAEGER_AGENT_PORT
           value: "5775"
       restartPolicy: Always
+      imagePullSecrets:
+      - name: regcred

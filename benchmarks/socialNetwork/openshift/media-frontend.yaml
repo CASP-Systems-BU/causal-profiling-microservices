@@ -65,3 +65,5 @@ spec:
       - name: jaeger-conf
         configMap:
           name: jaeger-config-yaml
+      imagePullSecrets:
+      - name: regcred

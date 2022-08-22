@@ -76,6 +76,8 @@ spec:
         - mountPath: /gen-lua
           name: gen-lua
       restartPolicy: Always
+      imagePullSecrets:
+      - name: regcred
       volumes:
       - name: nginx-conf
         configMap:

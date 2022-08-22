@@ -39,3 +39,5 @@ spec:
       - name: user-memcached
         image: memcached
       restartPolicy: Always
+      imagePullSecrets:
+      - name: regcred

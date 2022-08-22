@@ -51,3 +51,5 @@ spec:
         - name: RABBITMQ_DEFAULT_VHOST
           value: "/"
       restartPolicy: Always
+      imagePullSecrets:
+      - name: regcred

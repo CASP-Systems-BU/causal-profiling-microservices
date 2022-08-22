@@ -38,4 +38,6 @@ spec:
       containers:
       - name: compose-post-redis
         image: redis
+      imagePullSecrets:
+      - name: regcred
       restartPolicy: Always

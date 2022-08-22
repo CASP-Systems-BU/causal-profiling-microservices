@@ -32,3 +32,5 @@ spec:
             sleep 365d
         imagePullPolicy: Always
       restartPolicy: Always
+      imagePullSecrets:
+      - name: regcred

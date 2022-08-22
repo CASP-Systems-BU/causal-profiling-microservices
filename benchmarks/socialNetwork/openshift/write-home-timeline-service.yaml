@@ -46,6 +46,8 @@ spec:
             subPath: jaeger-config.yml
             name: jaeger-conf-yaml
       restartPolicy: Always
+      imagePullSecrets:
+      - name: regcred
       volumes:
         - name: jaeger-conf-yaml
           configMap:

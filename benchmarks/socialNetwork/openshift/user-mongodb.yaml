@@ -42,6 +42,8 @@ spec:
           - name: my-data
             mountPath: "/data/db"
       restartPolicy: Always
+      imagePullSecrets:
+      - name: regcred
       volumes:
       - name: my-data
         emptyDir: {}

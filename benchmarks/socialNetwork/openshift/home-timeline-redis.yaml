@@ -38,4 +38,6 @@ spec:
       containers:
       - name: home-timeline-redis
         image: redis
+      imagePullSecrets:
+      - name: regcred
       restartPolicy: Always
