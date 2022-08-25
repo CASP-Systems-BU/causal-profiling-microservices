@@ -2,3 +2,5 @@
 .idea/*
 *.pcap
 benchmarks/socialNetwork/openshift/scripts/tcpData/*
+*.config
+*.csv

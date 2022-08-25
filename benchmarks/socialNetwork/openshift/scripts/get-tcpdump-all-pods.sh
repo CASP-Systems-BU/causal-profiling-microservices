@@ -1,33 +1,46 @@
 #!/bin/bash
-read -p "Script mode: \n 1. TCP Dump \n 2.Jaeger " input_choice
-read -p "Start from scratch? Y/N" scratch_choice
+. docker-conf.config
+read -p "Script mode: 1.TCP Dump 2.Jaeger 3.No Jaeger " input_choice
+echo $input_choice
+thread_count=$1
+request_ps=$2
+benchmark_duration=$3
+#read -p "Start from scratch? Y/N" scratch_choice
+scratch_choice="y"
 echo "Please make sure you have logged in to your kubernetes cluster....."
 rm -rf tcpData
 mkdir tcpData
 #Deploy service if doing from scratch
 if [[ $scratch_choice == [yY] ]]
 then
-#  read -p "Docker Username: " docker_username
-#  read -p "Docker Password: " docker_password
-#  read -p "Docker Email Id: " docker_email
-#  oc create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username="$docker_username" --docker-password="$docker_password" --docker-email="$docker_email"
-#  oc get secret regcred --output=yaml
-#  sh deploy-all-services-and-configurations.sh
-#  total_pods=$(oc get pods  -n social-network --output name | wc -l)
-#  while [ $(oc get pods  -n social-network --output name --field-selector=status.phase=Running | wc -l) -ne "$total_pods" ]; do
-#     sleep 60
-#  done
+  oc delete all --all --namespace social-network
+  sleep 60
+  if [[ $input_choice -eq 1 ]] || [[ $input_choice -eq 3 ]]
+  then
+    cp ../nginx-thrift-config/jaeger-config-disabled.json ../nginx-thrift-config/jaeger-config.json
+  fi
+  if [[ $input_choice -eq 2 ]]
+  then
+    cp ../nginx-thrift-config/jaeger-config-enabled.json ../nginx-thrift-config/jaeger-config.json
+  fi
+  sh configmaps/update-jaeger-configmap.sh
+  oc create secret docker-registry regcred --docker-server=https://index.docker.io/v1/ --docker-username="$docker_username" --docker-password="$docker_password" --docker-email="$docker_email"
+  oc get secret regcred --output=yaml
+  sh deploy-all-services-and-configurations.sh
+  total_pods=$(oc get pods  -n social-network --output name | wc -l)
+  while [ $(oc get pods  -n social-network --output name --field-selector=status.phase=Running | wc -l) -ne "$total_pods" ]; do
+     sleep 60
+  done
+  sleep 60
   ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
   oc cp "/Users/acemaster/Documents/BU Code/RA/DeathStarBench" social-network/"${ubuntuclient}":/root
   oc exec "$ubuntuclient" -- bash -c "cd /root/DeathStarBench/socialNetwork/wrk2 && make clean && make"
-  sleep 60
+  sleep 120
 fi
 ALL_PODS=$(oc get pod -n social-network --field-selector=status.phase=Running -o custom-columns=name:metadata.name --no-headers)
 # Starting script in TCP Dump mode
 if [[ $input_choice -eq 1 ]]
 then
-  sh configmaps/update-jaeger-configmap-disabled.sh
-  sh restartall.sh
   echo "Starting tcpdump for all pods ....."
   pid_arr=()
   for pod in $ALL_PODS; do
@@ -44,7 +57,7 @@ then
   echo "Running workload...."
   ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
   oc exec "$ubuntuclient" -- bash -c "cd /root/DeathStarBench/socialNetwork/wrk2 && \
-        ./wrk -D exp -t 2 -c 10 -d 30s -L -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read -R 20"
+        ./wrk -D exp -t ${thread_count} -c ${request_ps} -d ${benchmark_duration}s -L -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read -R 20"
   sleep 1m
   echo "Killing all knsiff processes...."
   for value in "${pid_arr[@]}"
@@ -57,14 +70,12 @@ then
   mergecap -w tcpData/final-output.pcap tcpData/*.pcap
   python read-pcap-file.py
 fi
-# Starting script in Jaeger mode
-if [[ $input_choice -eq 2 ]]
+# Starting script in Jaeger/No Jaeger mode mode
+if [[ $input_choice -eq 2 ]] || [[ $input_choice -eq 3 ]]
 then
-  sh configmaps/update-jaeger-configmap.sh
-  sh restartall.sh
   echo "Running workload...."
   ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
   oc exec "$ubuntuclient" -- bash -c "cd /root/DeathStarBench/socialNetwork/wrk2 && \
-        ./wrk -D exp -t 2 -c 10 -d 30s -L -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read -R 20"
+        ./wrk -D exp -t ${thread_count} -c ${request_ps} -d ${benchmark_duration}s -L -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read -R 20"
   sleep 1m
 fi
