@@ -1,0 +1,78 @@
+Running 30s test @ http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read
+  5 threads and 40 connections
+  Thread calibration: mean lat.: 1.917ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 2.118ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 2.237ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 2.128ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 1.869ms, rate sampling interval: 10ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     1.58ms  245.87us   2.19ms   78.14%
+    Req/Sec     4.59     22.20   111.00     95.79%
+  Latency Distribution (HdrHistogram - Recorded Latency)
+ 50.000%    1.59ms
+ 75.000%    1.70ms
+ 90.000%    1.79ms
+ 99.000%    2.19ms
+ 99.900%    3.90ms
+ 99.990%    3.90ms
+ 99.999%    3.90ms
+100.000%    3.90ms
+
+  Detailed Percentile spectrum:
+       Value   Percentile   TotalCount 1/(1-Percentile)
+
+       0.969     0.000000            1         1.00
+       1.284     0.100000           43         1.11
+       1.398     0.200000           86         1.25
+       1.493     0.300000          130         1.43
+       1.544     0.400000          172         1.67
+       1.594     0.500000          215         2.00
+       1.620     0.550000          237         2.22
+       1.639     0.600000          259         2.50
+       1.655     0.650000          280         2.86
+       1.673     0.700000          301         3.33
+       1.702     0.750000          323         4.00
+       1.714     0.775000          334         4.44
+       1.724     0.800000          344         5.00
+       1.741     0.825000          355         5.71
+       1.758     0.850000          367         6.67
+       1.780     0.875000          377         8.00
+       1.787     0.887500          382         8.89
+       1.795     0.900000          387        10.00
+       1.816     0.912500          393        11.43
+       1.825     0.925000          399        13.33
+       1.835     0.937500          404        16.00
+       1.838     0.943750          406        17.78
+       1.846     0.950000          409        20.00
+       1.852     0.956250          412        22.86
+       1.874     0.962500          414        26.67
+       1.893     0.968750          417        32.00
+       1.907     0.971875          418        35.56
+       1.976     0.975000          420        40.00
+       1.982     0.978125          421        45.71
+       1.992     0.981250          422        53.33
+       2.099     0.984375          424        64.00
+       2.099     0.985938          424        71.11
+       2.163     0.987500          425        80.00
+       2.189     0.989062          426        91.43
+       2.189     0.990625          426       106.67
+       2.407     0.992188          427       128.00
+       2.407     0.992969          427       142.22
+       2.549     0.993750          428       160.00
+       2.549     0.994531          428       182.86
+       2.549     0.995313          428       213.33
+       3.245     0.996094          429       256.00
+       3.245     0.996484          429       284.44
+       3.245     0.996875          429       320.00
+       3.245     0.997266          429       365.71
+       3.245     0.997656          429       426.67
+       3.901     0.998047          430       512.00
+       3.901     1.000000          430          inf
+#[Mean    =        1.580, StdDeviation   =        0.246]
+#[Max     =        3.900, Total count    =          430]
+#[Buckets =           27, SubBuckets     =         2048]
+----------------------------------------------------------
+  644 requests in 30.01s, 125.15KB read
+  Socket errors: connect 0, read 0, write 0, timeout 206
+Requests/sec:     21.46
+Transfer/sec:      4.17KB

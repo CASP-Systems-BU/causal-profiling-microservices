@@ -1,0 +1,1154 @@
+1
+Running benchmark for script mode 1 for thread count: 2 requests per second: 10 duration: 30
+Please make sure you have logged in to your kubernetes cluster.....
+pod "compose-post-redis-ccbf4749f-pm2l2" deleted
+pod "compose-post-service-7f79994cb-bk5pv" deleted
+pod "home-timeline-redis-599f95b6cf-pwvdt" deleted
+pod "home-timeline-service-b95d5896b-l6zzp" deleted
+pod "jaeger-agent-5d47d784c7-n94wx" deleted
+pod "media-frontend-689698fbfd-bpl7x" deleted
+pod "media-memcached-677bcd9dc6-ghdnc" deleted
+pod "media-mongodb-8654986766-5lkf2" deleted
+pod "media-service-6bcd4dc445-skd7x" deleted
+pod "nginx-thrift-5c48c78bcd-v6dxn" deleted
+pod "post-storage-memcached-8456688dd8-9rqql" deleted
+pod "post-storage-mongodb-7789b57fb4-v27qq" deleted
+pod "post-storage-service-69c77bcd5-sgvvr" deleted
+pod "social-graph-mongodb-67c4495848-jr6f8" deleted
+pod "social-graph-redis-6749946cb8-rwqrh" deleted
+pod "social-graph-service-7d8c6d9d4-ckf65" deleted
+pod "text-service-7f9849d947-s6lzk" deleted
+pod "ubuntu-client-f9c9bcb64-8kskr" deleted
+pod "unique-id-service-648d97bbb6-w8ndj" deleted
+pod "url-shorten-memcached-7bc8cf7c7f-jmg4x" deleted
+pod "url-shorten-mongodb-76766d5757-fbjxg" deleted
+pod "url-shorten-service-9f596d8f6-l9gtt" deleted
+pod "user-memcached-78cd54bdcc-r2fhf" deleted
+pod "user-mention-service-668fbb7cb8-skkqs" deleted
+pod "user-mongodb-8698d6cd65-trpbb" deleted
+pod "user-service-6ddbb98c5-f5t2s" deleted
+pod "user-timeline-mongodb-794f89468f-47452" deleted
+pod "user-timeline-redis-64c9dc4c79-rd62x" deleted
+pod "user-timeline-service-78b45f48d6-xmvbl" deleted
+pod "write-home-timeline-rabbitmq-5f496c576f-ngxns" deleted
+pod "write-home-timeline-service-5765ccf5d7-44rjp" deleted
+service "compose-post-redis" deleted
+service "compose-post-service" deleted
+service "home-timeline-redis" deleted
+service "home-timeline-service" deleted
+service "jaeger-agent" deleted
+service "jaeger-out" deleted
+service "media-frontend" deleted
+service "media-memcached" deleted
+service "media-mongodb" deleted
+service "media-service" deleted
+service "nginx-thrift" deleted
+service "post-storage-memcached" deleted
+service "post-storage-mongodb" deleted
+service "post-storage-service" deleted
+service "social-graph-mongodb" deleted
+service "social-graph-redis" deleted
+service "social-graph-service" deleted
+service "text-service" deleted
+service "unique-id-service" deleted
+service "url-shorten-memcached" deleted
+service "url-shorten-mongodb" deleted
+service "url-shorten-service" deleted
+service "user-memcached" deleted
+service "user-mention-service" deleted
+service "user-mongodb" deleted
+service "user-service" deleted
+service "user-timeline-mongodb" deleted
+service "user-timeline-redis" deleted
+service "user-timeline-service" deleted
+service "write-home-timeline-rabbitmq" deleted
+service "write-home-timeline-service" deleted
+deployment.apps "compose-post-redis" deleted
+deployment.apps "compose-post-service" deleted
+deployment.apps "home-timeline-redis" deleted
+deployment.apps "home-timeline-service" deleted
+deployment.apps "jaeger-agent" deleted
+deployment.apps "media-frontend" deleted
+deployment.apps "media-memcached" deleted
+deployment.apps "media-mongodb" deleted
+deployment.apps "media-service" deleted
+deployment.apps "nginx-thrift" deleted
+deployment.apps "post-storage-memcached" deleted
+deployment.apps "post-storage-mongodb" deleted
+deployment.apps "post-storage-service" deleted
+deployment.apps "social-graph-mongodb" deleted
+deployment.apps "social-graph-redis" deleted
+deployment.apps "social-graph-service" deleted
+deployment.apps "text-service" deleted
+deployment.apps "ubuntu-client" deleted
+deployment.apps "unique-id-service" deleted
+deployment.apps "url-shorten-memcached" deleted
+deployment.apps "url-shorten-mongodb" deleted
+deployment.apps "url-shorten-service" deleted
+deployment.apps "user-memcached" deleted
+deployment.apps "user-mention-service" deleted
+deployment.apps "user-mongodb" deleted
+deployment.apps "user-service" deleted
+deployment.apps "user-timeline-mongodb" deleted
+deployment.apps "user-timeline-redis" deleted
+deployment.apps "user-timeline-service" deleted
+deployment.apps "write-home-timeline-rabbitmq" deleted
+deployment.apps "write-home-timeline-service" deleted
+route.route.openshift.io "jaeger-out" deleted
+route.route.openshift.io "nginx-thrift" deleted
+configmap/jaeger-config-yaml configured
+configmap/nginx-thrift-jaeger configured
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJ2aXZla2FjZSIsInBhc3N3b3JkIjoiS0BsQGJoQG0yMDIxIiwiZW1haWwiOiJ2aXZla3VAYnUuZWR1IiwiYXV0aCI6ImRtbDJaV3RoWTJVNlMwQnNRR0pvUUcweU1ESXgifX19
+kind: Secret
+metadata:
+  creationTimestamp: "2022-08-23T17:11:06Z"
+  name: regcred
+  namespace: social-network
+  resourceVersion: "165570"
+  uid: 7fae9b91-23c3-4702-a993-25ac40d34f13
+type: kubernetes.io/dockerconfigjson
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:anyuid added: "default"
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:privileged added: "default"
+service/compose-post-redis created
+deployment.apps/compose-post-redis created
+service/compose-post-service created
+deployment.apps/compose-post-service created
+service/home-timeline-redis created
+deployment.apps/home-timeline-redis created
+service/home-timeline-service created
+deployment.apps/home-timeline-service created
+service/jaeger-out created
+service/jaeger-agent created
+deployment.apps/jaeger-agent created
+service/media-frontend created
+deployment.apps/media-frontend created
+service/media-memcached created
+deployment.apps/media-memcached created
+service/media-mongodb created
+deployment.apps/media-mongodb created
+service/media-service created
+deployment.apps/media-service created
+service/nginx-thrift created
+deployment.apps/nginx-thrift created
+service/post-storage-memcached created
+deployment.apps/post-storage-memcached created
+service/post-storage-mongodb created
+deployment.apps/post-storage-mongodb created
+service/post-storage-service created
+deployment.apps/post-storage-service created
+service/social-graph-mongodb created
+deployment.apps/social-graph-mongodb created
+service/social-graph-redis created
+deployment.apps/social-graph-redis created
+service/social-graph-service created
+deployment.apps/social-graph-service created
+namespace/social-network unchanged
+service/text-service created
+deployment.apps/text-service created
+deployment.apps/ubuntu-client created
+service/unique-id-service created
+deployment.apps/unique-id-service created
+service/url-shorten-memcached created
+deployment.apps/url-shorten-memcached created
+service/url-shorten-mongodb created
+deployment.apps/url-shorten-mongodb created
+service/url-shorten-service created
+deployment.apps/url-shorten-service created
+service/user-memcached created
+deployment.apps/user-memcached created
+service/user-mention-service created
+deployment.apps/user-mention-service created
+service/user-mongodb created
+deployment.apps/user-mongodb created
+service/user-service created
+deployment.apps/user-service created
+service/user-timeline-mongodb created
+deployment.apps/user-timeline-mongodb created
+service/user-timeline-redis created
+deployment.apps/user-timeline-redis created
+service/user-timeline-service created
+deployment.apps/user-timeline-service created
+service/write-home-timeline-rabbitmq created
+deployment.apps/write-home-timeline-rabbitmq created
+service/write-home-timeline-service created
+deployment.apps/write-home-timeline-service created
+route.route.openshift.io/nginx-thrift exposed
+route.route.openshift.io/jaeger-out exposed
+After all pods are running (oc get pods):
+Follow the instructions in openshift/README.md to configure and run init_social_graph.py to load the dataset.
+rm -f wrk obj/*
+make[1]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit'
+make -C src clean
+make[2]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+rm -f luajit libluajit.a libluajit.so host/minilua host/buildvm lj_vm.s lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h host/buildvm_arch.h jit/vmdef.lua *.o host/*.o *.obj *.lib *.exp *.dll *.exe *.manifest *.pdb *.ilk
+make[2]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+make[1]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit'
+Building LuaJIT...
+make[1]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+HOSTCC    host/minilua.o
+HOSTLINK  host/minilua
+DYNASM    host/buildvm_arch.h
+HOSTCC    host/buildvm.o
+HOSTCC    host/buildvm_asm.o
+HOSTCC    host/buildvm_peobj.o
+HOSTCC    host/buildvm_lib.o
+HOSTCC    host/buildvm_fold.o
+HOSTLINK  host/buildvm
+BUILDVM   lj_vm.s
+ASM       lj_vm.o
+CC        lj_gc.o
+BUILDVM   lj_ffdef.h
+CC        lj_err.o
+CC        lj_char.o
+BUILDVM   lj_bcdef.h
+CC        lj_bc.o
+CC        lj_obj.o
+CC        lj_str.o
+CC        lj_tab.o
+CC        lj_func.o
+CC        lj_udata.o
+CC        lj_meta.o
+CC        lj_debug.o
+CC        lj_state.o
+CC        lj_dispatch.o
+CC        lj_vmevent.o
+CC        lj_vmmath.o
+CC        lj_strscan.o
+CC        lj_api.o
+CC        lj_lex.o
+CC        lj_parse.o
+CC        lj_bcread.o
+CC        lj_bcwrite.o
+CC        lj_load.o
+CC        lj_ir.o
+CC        lj_opt_mem.o
+BUILDVM   lj_folddef.h
+CC        lj_opt_fold.o
+CC        lj_opt_narrow.o
+CC        lj_opt_dce.o
+CC        lj_opt_loop.o
+CC        lj_opt_split.o
+CC        lj_opt_sink.o
+CC        lj_mcode.o
+CC        lj_snap.o
+CC        lj_record.o
+CC        lj_crecord.o
+BUILDVM   lj_recdef.h
+CC        lj_ffrecord.o
+CC        lj_asm.o
+CC        lj_trace.o
+CC        lj_gdbjit.o
+CC        lj_ctype.o
+CC        lj_cdata.o
+CC        lj_cconv.o
+CC        lj_ccall.o
+CC        lj_ccallback.o
+CC        lj_carith.o
+CC        lj_clib.o
+CC        lj_cparse.o
+CC        lj_lib.o
+CC        lj_alloc.o
+CC        lib_aux.o
+BUILDVM   lj_libdef.h
+CC        lib_base.o
+CC        lib_math.o
+CC        lib_bit.o
+CC        lib_string.o
+CC        lib_table.o
+CC        lib_io.o
+CC        lib_os.o
+CC        lib_package.o
+CC        lib_debug.o
+CC        lib_jit.o
+CC        lib_ffi.o
+CC        lib_init.o
+AR        libluajit.a
+CC        luajit.o
+BUILDVM   jit/vmdef.lua
+LINK      luajit
+OK        Successfully built LuaJIT
+make[1]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+CC src/wrk.c
+CC src/net.c
+CC src/ssl.c
+CC src/aprintf.c
+CC src/stats.c
+CC src/script.c
+CC src/units.c
+CC src/ae.c
+CC src/zmalloc.c
+CC src/http_parser.c
+CC src/tinymt64.c
+CC src/hdr_histogram.c
+LUAJIT src/wrk.lua
+LINK wrk
+Starting tcpdump for all pods .....
+Starting ksniff on pod: compose-post-redis-ccbf4749f-5x79p
+Starting ksniff on pod: compose-post-service-7f79994cb-sbqxq
+Starting ksniff on pod: home-timeline-redis-599f95b6cf-ff97q
+Starting ksniff on pod: home-timeline-service-b95d5896b-pwk29
+Starting ksniff on pod: jaeger-agent-5d47d784c7-6cgjc
+Starting ksniff on pod: media-frontend-689698fbfd-nj6v5
+Starting ksniff on pod: media-memcached-677bcd9dc6-vkrs9
+Starting ksniff on pod: media-mongodb-8654986766-7pm29
+Starting ksniff on pod: media-service-6bcd4dc445-4pttq
+Starting ksniff on pod: nginx-thrift-5c48c78bcd-ggjz5
+Starting ksniff on pod: post-storage-memcached-8456688dd8-b2t8v
+Starting ksniff on pod: post-storage-mongodb-7789b57fb4-g4h2f
+Starting ksniff on pod: post-storage-service-69c77bcd5-p7596
+Starting ksniff on pod: social-graph-mongodb-67c4495848-ccwvh
+Starting ksniff on pod: social-graph-redis-6749946cb8-wd4xr
+Starting ksniff on pod: social-graph-service-7d8c6d9d4-7tjt4
+Starting ksniff on pod: text-service-7f9849d947-w5h7g
+Starting ksniff on pod: ubuntu-client-f9c9bcb64-d6cg9
+Starting ksniff on pod: unique-id-service-648d97bbb6-gqwfj
+Starting ksniff on pod: url-shorten-memcached-7bc8cf7c7f-snhw5
+Starting ksniff on pod: url-shorten-mongodb-76766d5757-rbfpl
+Starting ksniff on pod: url-shorten-service-9f596d8f6-5gwzn
+Starting ksniff on pod: user-memcached-78cd54bdcc-jzrm2
+Starting ksniff on pod: user-mention-service-668fbb7cb8-x7z74
+Starting ksniff on pod: user-mongodb-8698d6cd65-t6g6d
+Starting ksniff on pod: user-service-6ddbb98c5-sdkpx
+Starting ksniff on pod: user-timeline-mongodb-794f89468f-gk7ks
+Starting ksniff on pod: user-timeline-redis-64c9dc4c79-qf7m4
+Starting ksniff on pod: user-timeline-service-78b45f48d6-hvk5f
+Starting ksniff on pod: write-home-timeline-rabbitmq-5f496c576f-zvflr
+Starting ksniff on pod: write-home-timeline-service-5765ccf5d7-txp2b
+Wait for all ksniff pods to be up....
+Running workload....
+Running 30s test @ http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read
+  2 threads and 10 connections
+  Thread calibration: mean lat.: 1.900ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 1.801ms, rate sampling interval: 10ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     1.71ms  510.01us   3.28ms   94.47%
+    Req/Sec    11.47     34.95   111.00     89.75%
+  Latency Distribution (HdrHistogram - Recorded Latency)
+ 50.000%    1.69ms
+ 75.000%    1.77ms
+ 90.000%    1.91ms
+ 99.000%    3.28ms
+ 99.900%    9.20ms
+ 99.990%    9.20ms
+ 99.999%    9.20ms
+100.000%    9.20ms
+
+  Detailed Percentile spectrum:
+       Value   Percentile   TotalCount 1/(1-Percentile)
+
+       1.072     0.000000            1         1.00
+       1.378     0.100000           44         1.11
+       1.515     0.200000           87         1.25
+       1.614     0.300000          131         1.43
+       1.652     0.400000          175         1.67
+       1.688     0.500000          220         2.00
+       1.698     0.550000          239         2.22
+       1.722     0.600000          263         2.50
+       1.736     0.650000          283         2.86
+       1.752     0.700000          307         3.33
+       1.773     0.750000          326         4.00
+       1.794     0.775000          337         4.44
+       1.811     0.800000          350         5.00
+       1.828     0.825000          359         5.71
+       1.853     0.850000          369         6.67
+       1.887     0.875000          380         8.00
+       1.897     0.887500          386         8.89
+       1.914     0.900000          391        10.00
+       1.924     0.912500          397        11.43
+       1.947     0.925000          403        13.33
+       1.954     0.937500          407        16.00
+       1.961     0.943750          410        17.78
+       1.977     0.950000          413        20.00
+       2.027     0.956250          416        22.86
+       2.046     0.962500          418        26.67
+       2.139     0.968750          421        32.00
+       2.173     0.971875          422        35.56
+       2.251     0.975000          424        40.00
+       2.475     0.978125          425        45.71
+       2.633     0.981250          426        53.33
+       3.055     0.984375          428        64.00
+       3.055     0.985938          428        71.11
+       3.193     0.987500          429        80.00
+       3.277     0.989062          430        91.43
+       3.277     0.990625          430       106.67
+       3.645     0.992188          431       128.00
+       3.645     0.992969          431       142.22
+       4.427     0.993750          432       160.00
+       4.427     0.994531          432       182.86
+       4.427     0.995313          432       213.33
+       6.087     0.996094          433       256.00
+       6.087     0.996484          433       284.44
+       6.087     0.996875          433       320.00
+       6.087     0.997266          433       365.71
+       6.087     0.997656          433       426.67
+       9.199     0.998047          434       512.00
+       9.199     1.000000          434          inf
+#[Mean    =        1.712, StdDeviation   =        0.510]
+#[Max     =        9.192, Total count    =          434]
+#[Buckets =           27, SubBuckets     =         2048]
+----------------------------------------------------------
+  651 requests in 30.01s, 126.51KB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec:     21.70
+Transfer/sec:      4.22KB
+Killing all knsiff processes....
+Deleting all ksniff pods....
+pod "ksniff-24k88" deleted
+pod "ksniff-456tr" deleted
+pod "ksniff-46mwj" deleted
+pod "ksniff-487dp" deleted
+pod "ksniff-4hthx" deleted
+pod "ksniff-7d2h8" deleted
+pod "ksniff-7xwxw" deleted
+pod "ksniff-82mpc" deleted
+pod "ksniff-8jntq" deleted
+pod "ksniff-8sdpl" deleted
+pod "ksniff-98ml8" deleted
+pod "ksniff-9kzs8" deleted
+pod "ksniff-9t2xb" deleted
+pod "ksniff-b4mqj" deleted
+pod "ksniff-bpkxd" deleted
+pod "ksniff-c4q4b" deleted
+pod "ksniff-ck7h2" deleted
+pod "ksniff-crzrx" deleted
+pod "ksniff-f5prd" deleted
+pod "ksniff-fbhpv" deleted
+pod "ksniff-gjlpv" deleted
+pod "ksniff-kqpsz" deleted
+pod "ksniff-lmmcb" deleted
+pod "ksniff-ln7jf" deleted
+pod "ksniff-t2kkw" deleted
+pod "ksniff-vmdwq" deleted
+pod "ksniff-w62dn" deleted
+pod "ksniff-wkttn" deleted
+pod "ksniff-xm2mf" deleted
+pod "ksniff-z54k2" deleted
+pod "ksniff-zq26m" deleted
+22398
+53
+2
+Running benchmark for script mode 2 for thread count: 2 requests per second: 10 duration: 30
+Please make sure you have logged in to your kubernetes cluster.....
+pod "compose-post-redis-ccbf4749f-5x79p" deleted
+pod "compose-post-service-7f79994cb-sbqxq" deleted
+pod "home-timeline-redis-599f95b6cf-ff97q" deleted
+pod "home-timeline-service-b95d5896b-pwk29" deleted
+pod "jaeger-agent-5d47d784c7-6cgjc" deleted
+pod "media-frontend-689698fbfd-nj6v5" deleted
+pod "media-memcached-677bcd9dc6-vkrs9" deleted
+pod "media-mongodb-8654986766-7pm29" deleted
+pod "media-service-6bcd4dc445-4pttq" deleted
+pod "nginx-thrift-5c48c78bcd-ggjz5" deleted
+pod "post-storage-memcached-8456688dd8-b2t8v" deleted
+pod "post-storage-mongodb-7789b57fb4-g4h2f" deleted
+pod "post-storage-service-69c77bcd5-p7596" deleted
+pod "social-graph-mongodb-67c4495848-ccwvh" deleted
+pod "social-graph-redis-6749946cb8-wd4xr" deleted
+pod "social-graph-service-7d8c6d9d4-7tjt4" deleted
+pod "text-service-7f9849d947-w5h7g" deleted
+pod "ubuntu-client-f9c9bcb64-d6cg9" deleted
+pod "unique-id-service-648d97bbb6-gqwfj" deleted
+pod "url-shorten-memcached-7bc8cf7c7f-snhw5" deleted
+pod "url-shorten-mongodb-76766d5757-rbfpl" deleted
+pod "url-shorten-service-9f596d8f6-5gwzn" deleted
+pod "user-memcached-78cd54bdcc-jzrm2" deleted
+pod "user-mention-service-668fbb7cb8-x7z74" deleted
+pod "user-mongodb-8698d6cd65-t6g6d" deleted
+pod "user-service-6ddbb98c5-sdkpx" deleted
+pod "user-timeline-mongodb-794f89468f-gk7ks" deleted
+pod "user-timeline-redis-64c9dc4c79-qf7m4" deleted
+pod "user-timeline-service-78b45f48d6-hvk5f" deleted
+pod "write-home-timeline-rabbitmq-5f496c576f-zvflr" deleted
+pod "write-home-timeline-service-5765ccf5d7-txp2b" deleted
+service "compose-post-redis" deleted
+service "compose-post-service" deleted
+service "home-timeline-redis" deleted
+service "home-timeline-service" deleted
+service "jaeger-agent" deleted
+service "jaeger-out" deleted
+service "media-frontend" deleted
+service "media-memcached" deleted
+service "media-mongodb" deleted
+service "media-service" deleted
+service "nginx-thrift" deleted
+service "post-storage-memcached" deleted
+service "post-storage-mongodb" deleted
+service "post-storage-service" deleted
+service "social-graph-mongodb" deleted
+service "social-graph-redis" deleted
+service "social-graph-service" deleted
+service "text-service" deleted
+service "unique-id-service" deleted
+service "url-shorten-memcached" deleted
+service "url-shorten-mongodb" deleted
+service "url-shorten-service" deleted
+service "user-memcached" deleted
+service "user-mention-service" deleted
+service "user-mongodb" deleted
+service "user-service" deleted
+service "user-timeline-mongodb" deleted
+service "user-timeline-redis" deleted
+service "user-timeline-service" deleted
+service "write-home-timeline-rabbitmq" deleted
+service "write-home-timeline-service" deleted
+deployment.apps "compose-post-redis" deleted
+deployment.apps "compose-post-service" deleted
+deployment.apps "home-timeline-redis" deleted
+deployment.apps "home-timeline-service" deleted
+deployment.apps "jaeger-agent" deleted
+deployment.apps "media-frontend" deleted
+deployment.apps "media-memcached" deleted
+deployment.apps "media-mongodb" deleted
+deployment.apps "media-service" deleted
+deployment.apps "nginx-thrift" deleted
+deployment.apps "post-storage-memcached" deleted
+deployment.apps "post-storage-mongodb" deleted
+deployment.apps "post-storage-service" deleted
+deployment.apps "social-graph-mongodb" deleted
+deployment.apps "social-graph-redis" deleted
+deployment.apps "social-graph-service" deleted
+deployment.apps "text-service" deleted
+deployment.apps "ubuntu-client" deleted
+deployment.apps "unique-id-service" deleted
+deployment.apps "url-shorten-memcached" deleted
+deployment.apps "url-shorten-mongodb" deleted
+deployment.apps "url-shorten-service" deleted
+deployment.apps "user-memcached" deleted
+deployment.apps "user-mention-service" deleted
+deployment.apps "user-mongodb" deleted
+deployment.apps "user-service" deleted
+deployment.apps "user-timeline-mongodb" deleted
+deployment.apps "user-timeline-redis" deleted
+deployment.apps "user-timeline-service" deleted
+deployment.apps "write-home-timeline-rabbitmq" deleted
+deployment.apps "write-home-timeline-service" deleted
+route.route.openshift.io "jaeger-out" deleted
+route.route.openshift.io "nginx-thrift" deleted
+configmap/jaeger-config-yaml configured
+configmap/nginx-thrift-jaeger configured
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJ2aXZla2FjZSIsInBhc3N3b3JkIjoiS0BsQGJoQG0yMDIxIiwiZW1haWwiOiJ2aXZla3VAYnUuZWR1IiwiYXV0aCI6ImRtbDJaV3RoWTJVNlMwQnNRR0pvUUcweU1ESXgifX19
+kind: Secret
+metadata:
+  creationTimestamp: "2022-08-23T17:11:06Z"
+  name: regcred
+  namespace: social-network
+  resourceVersion: "165570"
+  uid: 7fae9b91-23c3-4702-a993-25ac40d34f13
+type: kubernetes.io/dockerconfigjson
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:anyuid added: "default"
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:privileged added: "default"
+service/compose-post-redis created
+deployment.apps/compose-post-redis created
+service/compose-post-service created
+deployment.apps/compose-post-service created
+service/home-timeline-redis created
+deployment.apps/home-timeline-redis created
+service/home-timeline-service created
+deployment.apps/home-timeline-service created
+service/jaeger-out created
+service/jaeger-agent created
+deployment.apps/jaeger-agent created
+service/media-frontend created
+deployment.apps/media-frontend created
+service/media-memcached created
+deployment.apps/media-memcached created
+service/media-mongodb created
+deployment.apps/media-mongodb created
+service/media-service created
+deployment.apps/media-service created
+service/nginx-thrift created
+deployment.apps/nginx-thrift created
+service/post-storage-memcached created
+deployment.apps/post-storage-memcached created
+service/post-storage-mongodb created
+deployment.apps/post-storage-mongodb created
+service/post-storage-service created
+deployment.apps/post-storage-service created
+service/social-graph-mongodb created
+deployment.apps/social-graph-mongodb created
+service/social-graph-redis created
+deployment.apps/social-graph-redis created
+service/social-graph-service created
+deployment.apps/social-graph-service created
+namespace/social-network unchanged
+service/text-service created
+deployment.apps/text-service created
+deployment.apps/ubuntu-client created
+service/unique-id-service created
+deployment.apps/unique-id-service created
+service/url-shorten-memcached created
+deployment.apps/url-shorten-memcached created
+service/url-shorten-mongodb created
+deployment.apps/url-shorten-mongodb created
+service/url-shorten-service created
+deployment.apps/url-shorten-service created
+service/user-memcached created
+deployment.apps/user-memcached created
+service/user-mention-service created
+deployment.apps/user-mention-service created
+service/user-mongodb created
+deployment.apps/user-mongodb created
+service/user-service created
+deployment.apps/user-service created
+service/user-timeline-mongodb created
+deployment.apps/user-timeline-mongodb created
+service/user-timeline-redis created
+deployment.apps/user-timeline-redis created
+service/user-timeline-service created
+deployment.apps/user-timeline-service created
+service/write-home-timeline-rabbitmq created
+deployment.apps/write-home-timeline-rabbitmq created
+service/write-home-timeline-service created
+deployment.apps/write-home-timeline-service created
+route.route.openshift.io/nginx-thrift exposed
+route.route.openshift.io/jaeger-out exposed
+After all pods are running (oc get pods):
+Follow the instructions in openshift/README.md to configure and run init_social_graph.py to load the dataset.
+rm -f wrk obj/*
+make[1]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit'
+make -C src clean
+make[2]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+rm -f luajit libluajit.a libluajit.so host/minilua host/buildvm lj_vm.s lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h host/buildvm_arch.h jit/vmdef.lua *.o host/*.o *.obj *.lib *.exp *.dll *.exe *.manifest *.pdb *.ilk
+make[2]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+make[1]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit'
+Building LuaJIT...
+make[1]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+HOSTCC    host/minilua.o
+HOSTLINK  host/minilua
+DYNASM    host/buildvm_arch.h
+HOSTCC    host/buildvm.o
+HOSTCC    host/buildvm_asm.o
+HOSTCC    host/buildvm_peobj.o
+HOSTCC    host/buildvm_lib.o
+HOSTCC    host/buildvm_fold.o
+HOSTLINK  host/buildvm
+BUILDVM   lj_vm.s
+ASM       lj_vm.o
+CC        lj_gc.o
+BUILDVM   lj_ffdef.h
+CC        lj_err.o
+CC        lj_char.o
+BUILDVM   lj_bcdef.h
+CC        lj_bc.o
+CC        lj_obj.o
+CC        lj_str.o
+CC        lj_tab.o
+CC        lj_func.o
+CC        lj_udata.o
+CC        lj_meta.o
+CC        lj_debug.o
+CC        lj_state.o
+CC        lj_dispatch.o
+CC        lj_vmevent.o
+CC        lj_vmmath.o
+CC        lj_strscan.o
+CC        lj_api.o
+CC        lj_lex.o
+CC        lj_parse.o
+CC        lj_bcread.o
+CC        lj_bcwrite.o
+CC        lj_load.o
+CC        lj_ir.o
+CC        lj_opt_mem.o
+BUILDVM   lj_folddef.h
+CC        lj_opt_fold.o
+CC        lj_opt_narrow.o
+CC        lj_opt_dce.o
+CC        lj_opt_loop.o
+CC        lj_opt_split.o
+CC        lj_opt_sink.o
+CC        lj_mcode.o
+CC        lj_snap.o
+CC        lj_record.o
+CC        lj_crecord.o
+BUILDVM   lj_recdef.h
+CC        lj_ffrecord.o
+CC        lj_asm.o
+CC        lj_trace.o
+CC        lj_gdbjit.o
+CC        lj_ctype.o
+CC        lj_cdata.o
+CC        lj_cconv.o
+CC        lj_ccall.o
+CC        lj_ccallback.o
+CC        lj_carith.o
+CC        lj_clib.o
+CC        lj_cparse.o
+CC        lj_lib.o
+CC        lj_alloc.o
+CC        lib_aux.o
+BUILDVM   lj_libdef.h
+CC        lib_base.o
+CC        lib_math.o
+CC        lib_bit.o
+CC        lib_string.o
+CC        lib_table.o
+CC        lib_io.o
+CC        lib_os.o
+CC        lib_package.o
+CC        lib_debug.o
+CC        lib_jit.o
+CC        lib_ffi.o
+CC        lib_init.o
+AR        libluajit.a
+CC        luajit.o
+BUILDVM   jit/vmdef.lua
+LINK      luajit
+OK        Successfully built LuaJIT
+make[1]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+CC src/wrk.c
+CC src/net.c
+CC src/ssl.c
+CC src/aprintf.c
+CC src/stats.c
+CC src/script.c
+CC src/units.c
+CC src/ae.c
+CC src/zmalloc.c
+CC src/http_parser.c
+CC src/tinymt64.c
+CC src/hdr_histogram.c
+LUAJIT src/wrk.lua
+LINK wrk
+Running workload....
+Running 30s test @ http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read
+  2 threads and 10 connections
+  Thread calibration: mean lat.: 1.747ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 1.722ms, rate sampling interval: 10ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     1.61ms  623.58us   3.58ms   97.47%
+    Req/Sec    11.60     35.02   111.00     89.62%
+  Latency Distribution (HdrHistogram - Recorded Latency)
+ 50.000%    1.58ms
+ 75.000%    1.66ms
+ 90.000%    1.78ms
+ 99.000%    3.58ms
+ 99.900%    9.33ms
+ 99.990%    9.33ms
+ 99.999%    9.33ms
+100.000%    9.33ms
+
+  Detailed Percentile spectrum:
+       Value   Percentile   TotalCount 1/(1-Percentile)
+
+       0.956     0.000000            1         1.00
+       1.260     0.100000           44         1.11
+       1.421     0.200000           87         1.25
+       1.497     0.300000          132         1.43
+       1.544     0.400000          174         1.67
+       1.576     0.500000          219         2.00
+       1.591     0.550000          241         2.22
+       1.605     0.600000          261         2.50
+       1.624     0.650000          284         2.86
+       1.644     0.700000          305         3.33
+       1.661     0.750000          327         4.00
+       1.670     0.775000          337         4.44
+       1.683     0.800000          349         5.00
+       1.707     0.825000          359         5.71
+       1.735     0.850000          370         6.67
+       1.755     0.875000          380         8.00
+       1.766     0.887500          386         8.89
+       1.779     0.900000          392        10.00
+       1.792     0.912500          397        11.43
+       1.803     0.925000          402        13.33
+       1.834     0.937500          407        16.00
+       1.853     0.943750          410        17.78
+       1.872     0.950000          413        20.00
+       1.908     0.956250          416        22.86
+       1.943     0.962500          418        26.67
+       2.029     0.968750          421        32.00
+       2.107     0.971875          422        35.56
+       2.131     0.975000          424        40.00
+       2.153     0.978125          425        45.71
+       2.411     0.981250          426        53.33
+       2.481     0.984375          428        64.00
+       2.481     0.985938          428        71.11
+       3.419     0.987500          429        80.00
+       3.575     0.989062          430        91.43
+       3.575     0.990625          430       106.67
+       4.367     0.992188          431       128.00
+       4.367     0.992969          431       142.22
+       5.867     0.993750          432       160.00
+       5.867     0.994531          432       182.86
+       5.867     0.995313          432       213.33
+       9.095     0.996094          433       256.00
+       9.095     0.996484          433       284.44
+       9.095     0.996875          433       320.00
+       9.095     0.997266          433       365.71
+       9.095     0.997656          433       426.67
+       9.327     0.998047          434       512.00
+       9.327     1.000000          434          inf
+#[Mean    =        1.612, StdDeviation   =        0.624]
+#[Max     =        9.320, Total count    =          434]
+#[Buckets =           27, SubBuckets     =         2048]
+----------------------------------------------------------
+  651 requests in 30.01s, 126.51KB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec:     21.70
+Transfer/sec:      4.22KB
+3
+Running benchmark for script mode 3 for thread count: 2 requests per second: 10 duration: 30
+Please make sure you have logged in to your kubernetes cluster.....
+pod "compose-post-redis-ccbf4749f-jtpmr" deleted
+pod "compose-post-service-7f79994cb-rfrrr" deleted
+pod "home-timeline-redis-599f95b6cf-w5g64" deleted
+pod "home-timeline-service-b95d5896b-5j2r6" deleted
+pod "jaeger-agent-5d47d784c7-lfdrm" deleted
+pod "media-frontend-689698fbfd-fntkz" deleted
+pod "media-memcached-677bcd9dc6-s9bwg" deleted
+pod "media-mongodb-8654986766-7wsbr" deleted
+pod "media-service-6bcd4dc445-5dfx7" deleted
+pod "nginx-thrift-5c48c78bcd-r5dhz" deleted
+pod "post-storage-memcached-8456688dd8-pjb5k" deleted
+pod "post-storage-mongodb-7789b57fb4-kx2k5" deleted
+pod "post-storage-service-69c77bcd5-dlfx5" deleted
+pod "social-graph-mongodb-67c4495848-br5z2" deleted
+pod "social-graph-redis-6749946cb8-z978t" deleted
+pod "social-graph-service-7d8c6d9d4-4x4ch" deleted
+pod "text-service-7f9849d947-b8fqt" deleted
+pod "ubuntu-client-f9c9bcb64-z68sm" deleted
+pod "unique-id-service-648d97bbb6-2fv9w" deleted
+pod "url-shorten-memcached-7bc8cf7c7f-rdgjb" deleted
+pod "url-shorten-mongodb-76766d5757-n6swx" deleted
+pod "url-shorten-service-9f596d8f6-6clgz" deleted
+pod "user-memcached-78cd54bdcc-zjxp5" deleted
+pod "user-mention-service-668fbb7cb8-kdh89" deleted
+pod "user-mongodb-8698d6cd65-xs8sl" deleted
+pod "user-service-6ddbb98c5-cnb4f" deleted
+pod "user-timeline-mongodb-794f89468f-xssxb" deleted
+pod "user-timeline-redis-64c9dc4c79-dhf75" deleted
+pod "user-timeline-service-78b45f48d6-v5fvj" deleted
+pod "write-home-timeline-rabbitmq-5f496c576f-r2m5z" deleted
+pod "write-home-timeline-service-5765ccf5d7-6kmml" deleted
+service "compose-post-redis" deleted
+service "compose-post-service" deleted
+service "home-timeline-redis" deleted
+service "home-timeline-service" deleted
+service "jaeger-agent" deleted
+service "jaeger-out" deleted
+service "media-frontend" deleted
+service "media-memcached" deleted
+service "media-mongodb" deleted
+service "media-service" deleted
+service "nginx-thrift" deleted
+service "post-storage-memcached" deleted
+service "post-storage-mongodb" deleted
+service "post-storage-service" deleted
+service "social-graph-mongodb" deleted
+service "social-graph-redis" deleted
+service "social-graph-service" deleted
+service "text-service" deleted
+service "unique-id-service" deleted
+service "url-shorten-memcached" deleted
+service "url-shorten-mongodb" deleted
+service "url-shorten-service" deleted
+service "user-memcached" deleted
+service "user-mention-service" deleted
+service "user-mongodb" deleted
+service "user-service" deleted
+service "user-timeline-mongodb" deleted
+service "user-timeline-redis" deleted
+service "user-timeline-service" deleted
+service "write-home-timeline-rabbitmq" deleted
+service "write-home-timeline-service" deleted
+deployment.apps "compose-post-redis" deleted
+deployment.apps "compose-post-service" deleted
+deployment.apps "home-timeline-redis" deleted
+deployment.apps "home-timeline-service" deleted
+deployment.apps "jaeger-agent" deleted
+deployment.apps "media-frontend" deleted
+deployment.apps "media-memcached" deleted
+deployment.apps "media-mongodb" deleted
+deployment.apps "media-service" deleted
+deployment.apps "nginx-thrift" deleted
+deployment.apps "post-storage-memcached" deleted
+deployment.apps "post-storage-mongodb" deleted
+deployment.apps "post-storage-service" deleted
+deployment.apps "social-graph-mongodb" deleted
+deployment.apps "social-graph-redis" deleted
+deployment.apps "social-graph-service" deleted
+deployment.apps "text-service" deleted
+deployment.apps "ubuntu-client" deleted
+deployment.apps "unique-id-service" deleted
+deployment.apps "url-shorten-memcached" deleted
+deployment.apps "url-shorten-mongodb" deleted
+deployment.apps "url-shorten-service" deleted
+deployment.apps "user-memcached" deleted
+deployment.apps "user-mention-service" deleted
+deployment.apps "user-mongodb" deleted
+deployment.apps "user-service" deleted
+deployment.apps "user-timeline-mongodb" deleted
+deployment.apps "user-timeline-redis" deleted
+deployment.apps "user-timeline-service" deleted
+deployment.apps "write-home-timeline-rabbitmq" deleted
+deployment.apps "write-home-timeline-service" deleted
+route.route.openshift.io "jaeger-out" deleted
+route.route.openshift.io "nginx-thrift" deleted
+configmap/jaeger-config-yaml configured
+configmap/nginx-thrift-jaeger configured
+apiVersion: v1
+data:
+  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJ2aXZla2FjZSIsInBhc3N3b3JkIjoiS0BsQGJoQG0yMDIxIiwiZW1haWwiOiJ2aXZla3VAYnUuZWR1IiwiYXV0aCI6ImRtbDJaV3RoWTJVNlMwQnNRR0pvUUcweU1ESXgifX19
+kind: Secret
+metadata:
+  creationTimestamp: "2022-08-23T17:11:06Z"
+  name: regcred
+  namespace: social-network
+  resourceVersion: "165570"
+  uid: 7fae9b91-23c3-4702-a993-25ac40d34f13
+type: kubernetes.io/dockerconfigjson
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:anyuid added: "default"
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:privileged added: "default"
+service/compose-post-redis created
+deployment.apps/compose-post-redis created
+service/compose-post-service created
+deployment.apps/compose-post-service created
+service/home-timeline-redis created
+deployment.apps/home-timeline-redis created
+service/home-timeline-service created
+deployment.apps/home-timeline-service created
+service/jaeger-out created
+service/jaeger-agent created
+deployment.apps/jaeger-agent created
+service/media-frontend created
+deployment.apps/media-frontend created
+service/media-memcached created
+deployment.apps/media-memcached created
+service/media-mongodb created
+deployment.apps/media-mongodb created
+service/media-service created
+deployment.apps/media-service created
+service/nginx-thrift created
+deployment.apps/nginx-thrift created
+service/post-storage-memcached created
+deployment.apps/post-storage-memcached created
+service/post-storage-mongodb created
+deployment.apps/post-storage-mongodb created
+service/post-storage-service created
+deployment.apps/post-storage-service created
+service/social-graph-mongodb created
+deployment.apps/social-graph-mongodb created
+service/social-graph-redis created
+deployment.apps/social-graph-redis created
+service/social-graph-service created
+deployment.apps/social-graph-service created
+namespace/social-network unchanged
+service/text-service created
+deployment.apps/text-service created
+deployment.apps/ubuntu-client created
+service/unique-id-service created
+deployment.apps/unique-id-service created
+service/url-shorten-memcached created
+deployment.apps/url-shorten-memcached created
+service/url-shorten-mongodb created
+deployment.apps/url-shorten-mongodb created
+service/url-shorten-service created
+deployment.apps/url-shorten-service created
+service/user-memcached created
+deployment.apps/user-memcached created
+service/user-mention-service created
+deployment.apps/user-mention-service created
+service/user-mongodb created
+deployment.apps/user-mongodb created
+service/user-service created
+deployment.apps/user-service created
+service/user-timeline-mongodb created
+deployment.apps/user-timeline-mongodb created
+service/user-timeline-redis created
+deployment.apps/user-timeline-redis created
+service/user-timeline-service created
+deployment.apps/user-timeline-service created
+service/write-home-timeline-rabbitmq created
+deployment.apps/write-home-timeline-rabbitmq created
+service/write-home-timeline-service created
+deployment.apps/write-home-timeline-service created
+route.route.openshift.io/nginx-thrift exposed
+route.route.openshift.io/jaeger-out exposed
+After all pods are running (oc get pods):
+Follow the instructions in openshift/README.md to configure and run init_social_graph.py to load the dataset.
+rm -f wrk obj/*
+make[1]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit'
+make -C src clean
+make[2]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+rm -f luajit libluajit.a libluajit.so host/minilua host/buildvm lj_vm.s lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h host/buildvm_arch.h jit/vmdef.lua *.o host/*.o *.obj *.lib *.exp *.dll *.exe *.manifest *.pdb *.ilk
+make[2]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+make[1]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit'
+Building LuaJIT...
+make[1]: Entering directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+HOSTCC    host/minilua.o
+HOSTLINK  host/minilua
+DYNASM    host/buildvm_arch.h
+HOSTCC    host/buildvm.o
+HOSTCC    host/buildvm_asm.o
+HOSTCC    host/buildvm_peobj.o
+HOSTCC    host/buildvm_lib.o
+HOSTCC    host/buildvm_fold.o
+HOSTLINK  host/buildvm
+BUILDVM   lj_vm.s
+ASM       lj_vm.o
+CC        lj_gc.o
+BUILDVM   lj_ffdef.h
+CC        lj_err.o
+CC        lj_char.o
+BUILDVM   lj_bcdef.h
+CC        lj_bc.o
+CC        lj_obj.o
+CC        lj_str.o
+CC        lj_tab.o
+CC        lj_func.o
+CC        lj_udata.o
+CC        lj_meta.o
+CC        lj_debug.o
+CC        lj_state.o
+CC        lj_dispatch.o
+CC        lj_vmevent.o
+CC        lj_vmmath.o
+CC        lj_strscan.o
+CC        lj_api.o
+CC        lj_lex.o
+CC        lj_parse.o
+CC        lj_bcread.o
+CC        lj_bcwrite.o
+CC        lj_load.o
+CC        lj_ir.o
+CC        lj_opt_mem.o
+BUILDVM   lj_folddef.h
+CC        lj_opt_fold.o
+CC        lj_opt_narrow.o
+CC        lj_opt_dce.o
+CC        lj_opt_loop.o
+CC        lj_opt_split.o
+CC        lj_opt_sink.o
+CC        lj_mcode.o
+CC        lj_snap.o
+CC        lj_record.o
+CC        lj_crecord.o
+BUILDVM   lj_recdef.h
+CC        lj_ffrecord.o
+CC        lj_asm.o
+CC        lj_trace.o
+CC        lj_gdbjit.o
+CC        lj_ctype.o
+CC        lj_cdata.o
+CC        lj_cconv.o
+CC        lj_ccall.o
+CC        lj_ccallback.o
+CC        lj_carith.o
+CC        lj_clib.o
+CC        lj_cparse.o
+CC        lj_lib.o
+CC        lj_alloc.o
+CC        lib_aux.o
+BUILDVM   lj_libdef.h
+CC        lib_base.o
+CC        lib_math.o
+CC        lib_bit.o
+CC        lib_string.o
+CC        lib_table.o
+CC        lib_io.o
+CC        lib_os.o
+CC        lib_package.o
+CC        lib_debug.o
+CC        lib_jit.o
+CC        lib_ffi.o
+CC        lib_init.o
+AR        libluajit.a
+CC        luajit.o
+BUILDVM   jit/vmdef.lua
+LINK      luajit
+OK        Successfully built LuaJIT
+make[1]: Leaving directory '/root/DeathStarBench/socialNetwork/wrk2/deps/luajit/src'
+CC src/wrk.c
+CC src/net.c
+CC src/ssl.c
+CC src/aprintf.c
+CC src/stats.c
+CC src/script.c
+CC src/units.c
+CC src/ae.c
+CC src/zmalloc.c
+CC src/http_parser.c
+CC src/tinymt64.c
+CC src/hdr_histogram.c
+LUAJIT src/wrk.lua
+LINK wrk
+Running workload....
+Running 30s test @ http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read
+  2 threads and 10 connections
+  Thread calibration: mean lat.: 1.614ms, rate sampling interval: 10ms
+  Thread calibration: mean lat.: 1.759ms, rate sampling interval: 10ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     1.57ms  545.16us   4.44ms   95.62%
+    Req/Sec    11.56     34.47   111.00     89.52%
+  Latency Distribution (HdrHistogram - Recorded Latency)
+ 50.000%    1.56ms
+ 75.000%    1.64ms
+ 90.000%    1.73ms
+ 99.000%    4.44ms
+ 99.900%    6.90ms
+ 99.990%    6.90ms
+ 99.999%    6.90ms
+100.000%    6.90ms
+
+  Detailed Percentile spectrum:
+       Value   Percentile   TotalCount 1/(1-Percentile)
+
+       0.954     0.000000            1         1.00
+       1.195     0.100000           44         1.11
+       1.291     0.200000           87         1.25
+       1.404     0.300000          131         1.43
+       1.502     0.400000          175         1.67
+       1.563     0.500000          217         2.00
+       1.582     0.550000          242         2.22
+       1.594     0.600000          261         2.50
+       1.611     0.650000          283         2.86
+       1.626     0.700000          304         3.33
+       1.638     0.750000          328         4.00
+       1.649     0.775000          337         4.44
+       1.658     0.800000          349         5.00
+       1.671     0.825000          359         5.71
+       1.688     0.850000          369         6.67
+       1.708     0.875000          380         8.00
+       1.717     0.887500          386         8.89
+       1.727     0.900000          391        10.00
+       1.752     0.912500          397        11.43
+       1.762     0.925000          402        13.33
+       1.800     0.937500          407        16.00
+       1.812     0.943750          410        17.78
+       1.829     0.950000          413        20.00
+       1.955     0.956250          416        22.86
+       2.012     0.962500          418        26.67
+       2.179     0.968750          421        32.00
+       2.195     0.971875          422        35.56
+       2.563     0.975000          424        40.00
+       2.581     0.978125          425        45.71
+       3.893     0.981250          426        53.33
+       4.279     0.984375          428        64.00
+       4.279     0.985938          428        71.11
+       4.315     0.987500          429        80.00
+       4.439     0.989062          430        91.43
+       4.439     0.990625          430       106.67
+       4.707     0.992188          431       128.00
+       4.707     0.992969          431       142.22
+       5.423     0.993750          432       160.00
+       5.423     0.994531          432       182.86
+       5.423     0.995313          432       213.33
+       5.871     0.996094          433       256.00
+       5.871     0.996484          433       284.44
+       5.871     0.996875          433       320.00
+       5.871     0.997266          433       365.71
+       5.871     0.997656          433       426.67
+       6.903     0.998047          434       512.00
+       6.903     1.000000          434          inf
+#[Mean    =        1.574, StdDeviation   =        0.545]
+#[Max     =        6.900, Total count    =          434]
+#[Buckets =           27, SubBuckets     =         2048]
+----------------------------------------------------------
+  651 requests in 30.00s, 126.51KB read
+  Socket errors: connect 0, read 0, write 0, timeout 2
+Requests/sec:     21.70
+Transfer/sec:      4.22KB
