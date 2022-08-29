@@ -10,8 +10,6 @@ echo "Running benchmark for script mode ${input_choice} for thread count: ${thre
 #read -p "Start from scratch? Y/N" scratch_choice
 scratch_choice="y"
 echo "Please make sure you have logged in to your kubernetes cluster....."
-rm -rf tcpData
-mkdir tcpData
 #Deploy service if doing from scratch
 if [[ $scratch_choice == [yY] ]]
 then
@@ -47,6 +45,8 @@ ALL_PODS=$(oc get pod -n social-network --field-selector=status.phase=Running -o
 # Starting script in TCP Dump mode
 if [[ $input_choice -eq 1 ]]
 then
+  rm -rf tcpData
+  mkdir tcpData
   echo "Starting tcpdump for all pods ....."
   pid_arr=()
   for pod in $ALL_PODS; do
