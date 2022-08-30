@@ -4,4 +4,4 @@ reporter:
   localAgentHostPort: "jaeger-agent:6831"
 sampler:
   type: const
-  param: 0
+  param: 1
