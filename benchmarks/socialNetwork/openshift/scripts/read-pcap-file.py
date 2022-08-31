@@ -7,9 +7,14 @@ from matplotlib.pyplot import figure
 import numpy as np
 from matplotlib.patches import Patch
 import networkx as nx
+from matplotlib.widgets import Slider
 
 
 def generate_network_graph():
+    """
+    Generate network graph from csv
+    :return: None
+    """
     df = pd.read_csv("packet_data.csv")
     df1 = df[['SRC IP', 'Dest IP']]
     network_graph = nx.from_pandas_edgelist(df1, 'SRC IP', 'Dest IP',create_using=nx.DiGraph())
@@ -17,6 +22,7 @@ def generate_network_graph():
     figure(figsize=(10, 8))
     nx.draw_shell(network_graph, with_labels=True)
     plt.show()
+
 
 def generate_gantt_chart():
     """
@@ -94,6 +100,6 @@ def read_pcap_file():
 
 
 if __name__ == '__main__':
-    # read_pcap_file()
+    read_pcap_file()
     # generate_gantt_chart()
-    generate_network_graph()
+    # generate_network_graph()

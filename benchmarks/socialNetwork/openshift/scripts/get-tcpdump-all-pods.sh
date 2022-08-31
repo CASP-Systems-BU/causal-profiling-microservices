@@ -1,12 +1,21 @@
 #!/bin/bash
 . docker-conf.config
-read -p "Script mode: 1.TCP Dump 2.Jaeger 3.No Jaeger " input_choice
+read -p "Script mode: 1.TCP Dump 2.Jaeger 3.No Jaeger 4. Mock benchmark" input_choice
 echo $input_choice
 thread_count=$1
 connections=$2
 benchmark_duration=$3
 total_rps=$4
 echo "Running benchmark for script mode ${input_choice} for thread count: ${thread_count} connections: ${connections} requests per second: ${total_rps} duration: ${benchmark_duration}"
+if [[ $input_choice -eq 4 ]]
+then
+  echo "Running workload...."
+  ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
+  oc exec "$ubuntuclient" -- bash -c "cd /root/DeathStarBench/socialNetwork/wrk2 && \
+        ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read" > benchmark-exp-logs/experiment-${input_choice}-${total_rps}.log
+  sleep 1m
+  exit 0
+fi
 #read -p "Start from scratch? Y/N" scratch_choice
 scratch_choice="y"
 echo "Please make sure you have logged in to your kubernetes cluster....."
@@ -63,7 +72,7 @@ then
   echo "Running workload...."
   ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
   oc exec "$ubuntuclient" -- bash -c "cd /root/DeathStarBench/socialNetwork/wrk2 && \
-        ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read -R 20" > benchmark-exp-logs/experiment-${input_choice}-${total_rps}.log
+        ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read" > benchmark-exp-logs/experiment-${input_choice}-${total_rps}.log
   sleep 1m
   echo "Killing all knsiff processes...."
   for value in "${pid_arr[@]}"
@@ -74,7 +83,7 @@ then
   oc delete pods -l app=ksniff
   sleep 30
   mergecap -w tcpData/final-output.pcap tcpData/*.pcap
-  python read-pcap-file.py
+#  python read-pcap-file.py
 fi
 # Starting script in Jaeger/No Jaeger mode mode
 if [[ $input_choice -eq 2 ]] || [[ $input_choice -eq 3 ]]
@@ -82,6 +91,6 @@ then
   echo "Running workload...."
   ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
   oc exec "$ubuntuclient" -- bash -c "cd /root/DeathStarBench/socialNetwork/wrk2 && \
-        ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read -R 20" > benchmark-exp-logs/experiment-${input_choice}-${total_rps}.log
+        ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read" > benchmark-exp-logs/experiment-${input_choice}-${total_rps}.log
   sleep 1m
 fi
