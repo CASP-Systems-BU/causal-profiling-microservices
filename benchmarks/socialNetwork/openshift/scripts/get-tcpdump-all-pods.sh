@@ -46,7 +46,7 @@ then
   done
   sleep 60
   ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
-  oc cp "/Users/acemaster/Documents/BU Code/RA/DeathStarBench" social-network/"${ubuntuclient}":/root
+  oc cp "/Users/acemaster/Documents/BU_Code/RA/DeathStarBench" social-network/"${ubuntuclient}":/root
   oc exec "$ubuntuclient" -- bash -c "cd /root/DeathStarBench/socialNetwork/wrk2 && make clean && make"
   sleep 120
 fi
