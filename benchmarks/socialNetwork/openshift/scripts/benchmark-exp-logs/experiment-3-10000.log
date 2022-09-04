@@ -1,0 +1,124 @@
+Running 1m test @ http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read
+  20 threads and 600 connections
+  Thread calibration: mean lat.: 3178.056ms, rate sampling interval: 13008ms
+  Thread calibration: mean lat.: 3425.655ms, rate sampling interval: 13557ms
+  Thread calibration: mean lat.: 3596.037ms, rate sampling interval: 14737ms
+  Thread calibration: mean lat.: 3324.035ms, rate sampling interval: 12861ms
+  Thread calibration: mean lat.: 3369.451ms, rate sampling interval: 13271ms
+  Thread calibration: mean lat.: 4378.233ms, rate sampling interval: 15556ms
+  Thread calibration: mean lat.: 3912.904ms, rate sampling interval: 14884ms
+  Thread calibration: mean lat.: 4822.472ms, rate sampling interval: 15777ms
+  Thread calibration: mean lat.: 3500.523ms, rate sampling interval: 13164ms
+  Thread calibration: mean lat.: 3368.809ms, rate sampling interval: 12419ms
+  Thread calibration: mean lat.: 4220.759ms, rate sampling interval: 15204ms
+  Thread calibration: mean lat.: 1964.386ms, rate sampling interval: 10158ms
+  Thread calibration: mean lat.: 3295.439ms, rate sampling interval: 13033ms
+  Thread calibration: mean lat.: 4578.062ms, rate sampling interval: 15384ms
+  Thread calibration: mean lat.: 4035.733ms, rate sampling interval: 15261ms
+  Thread calibration: mean lat.: 3723.778ms, rate sampling interval: 13664ms
+  Thread calibration: mean lat.: 3981.876ms, rate sampling interval: 13688ms
+  Thread calibration: mean lat.: 3667.718ms, rate sampling interval: 13410ms
+  Thread calibration: mean lat.: 4026.629ms, rate sampling interval: 13836ms
+  Thread calibration: mean lat.: 4008.481ms, rate sampling interval: 14131ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency    21.86s    11.06s    0.91m    64.49%
+    Req/Sec    31.66     20.30    66.00     62.90%
+  Latency Distribution (HdrHistogram - Recorded Latency)
+ 50.000%   25.66s 
+ 75.000%   29.54s 
+ 90.000%   32.82s 
+ 99.000%    0.91m 
+ 99.900%    0.95m 
+ 99.990%    0.97m 
+ 99.999%    0.97m 
+100.000%    0.97m 
+
+  Detailed Percentile spectrum:
+       Value   Percentile   TotalCount 1/(1-Percentile)
+
+    5124.095     0.000000            1         1.00
+    8896.511     0.100000         2815         1.11
+   10027.007     0.200000         5622         1.25
+   11403.263     0.300000         8412         1.43
+   14049.279     0.400000        11216         1.67
+   25657.343     0.500000        14019         2.00
+   26705.919     0.550000        15420         2.22
+   27508.735     0.600000        16838         2.50
+   28164.095     0.650000        18238         2.86
+   28819.455     0.700000        19639         3.33
+   29540.351     0.750000        21039         4.00
+   29982.719     0.775000        21743         4.44
+   30425.087     0.800000        22451         5.00
+   30900.223     0.825000        23131         5.71
+   31424.511     0.850000        23838         6.67
+   31948.799     0.875000        24531         8.00
+   32342.015     0.887500        24891         8.89
+   32817.151     0.900000        25235        10.00
+   33341.439     0.912500        25584        11.43
+   34045.951     0.925000        25931        13.33
+   34865.151     0.937500        26288        16.00
+   35389.439     0.943750        26457        17.78
+   36175.871     0.950000        26635        20.00
+   36995.071     0.956250        26807        22.86
+   43089.919     0.962500        26985        26.67
+   44630.015     0.968750        27158        32.00
+   45383.679     0.971875        27248        35.56
+   46170.111     0.975000        27334        40.00
+   47513.599     0.978125        27420        45.71
+   51838.975     0.981250        27509        53.33
+   53313.535     0.984375        27598        64.00
+   53673.983     0.985938        27643        71.11
+   54099.967     0.987500        27686        80.00
+   54394.879     0.989062        27727        91.43
+   54788.095     0.990625        27776       106.67
+   55148.543     0.992188        27817       128.00
+   55312.383     0.992969        27839       142.22
+   55443.455     0.993750        27859       160.00
+   55640.063     0.994531        27882       182.86
+   55869.439     0.995313        27906       213.33
+   56098.815     0.996094        27925       256.00
+   56164.351     0.996484        27935       284.44
+   56262.655     0.996875        27947       320.00
+   56360.959     0.997266        27957       365.71
+   56492.031     0.997656        27968       426.67
+   56754.175     0.998047        27980       512.00
+   56819.711     0.998242        27984       568.89
+   56918.015     0.998437        27992       640.00
+   57016.319     0.998633        27996       731.43
+   57114.623     0.998828        28004       853.33
+   57147.391     0.999023        28006      1024.00
+   57245.695     0.999121        28010      1137.78
+   57343.999     0.999219        28012      1280.00
+   57409.535     0.999316        28014      1462.86
+   57475.071     0.999414        28017      1706.67
+   57573.375     0.999512        28022      2048.00
+   57573.375     0.999561        28022      2275.56
+   57606.143     0.999609        28023      2560.00
+   57737.215     0.999658        28024      2925.71
+   57769.983     0.999707        28025      3413.33
+   57933.823     0.999756        28027      4096.00
+   57933.823     0.999780        28027      4551.11
+   57966.591     0.999805        28028      5120.00
+   57999.359     0.999829        28029      5851.43
+   57999.359     0.999854        28029      6826.67
+   58064.895     0.999878        28030      8192.00
+   58064.895     0.999890        28030      9102.22
+   58163.199     0.999902        28031     10240.00
+   58163.199     0.999915        28031     11702.86
+   58163.199     0.999927        28031     13653.33
+   58228.735     0.999939        28032     16384.00
+   58228.735     0.999945        28032     18204.44
+   58228.735     0.999951        28032     20480.00
+   58228.735     0.999957        28032     23405.71
+   58228.735     0.999963        28032     27306.67
+   58392.575     0.999969        28033     32768.00
+   58392.575     1.000000        28033          inf
+#[Mean    =    21861.500, StdDeviation   =    11060.294]
+#[Max     =    58359.808, Total count    =        28033]
+#[Buckets =           27, SubBuckets     =         2048]
+----------------------------------------------------------
+  43058 requests in 1.00m, 9.57MB read
+  Socket errors: connect 0, read 2, write 1, timeout 0
+  Non-2xx or 3xx responses: 9250
+Requests/sec:    717.10
+Transfer/sec:    163.13KB
