@@ -80,6 +80,7 @@ then
        kill -9 "$value"
   done
   echo "Deleting all ksniff pods...."
+  oc get pods -n social-network -o json > data.json
   oc delete pods -l app=ksniff
   sleep 30
   mergecap -w tcpData/final-output.pcap tcpData/*.pcap

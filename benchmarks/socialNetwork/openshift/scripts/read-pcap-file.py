@@ -1,3 +1,4 @@
+import json
 import pyshark
 import datetime
 import csv
@@ -8,6 +9,7 @@ import numpy as np
 from matplotlib.patches import Patch
 import networkx as nx
 from matplotlib.widgets import Slider
+import subprocess
 
 
 def generate_network_graph():
@@ -60,11 +62,42 @@ def generate_gantt_chart():
     plt.show()
 
 
+def get_from_dict(obj, key):
+    """
+    Return value if in object or key itself
+    :param obj:
+    :param key:
+    :return: string
+    """
+    if key in obj:
+        return obj[key]
+    return key
+
+
+def get_pod_details():
+    """
+    Get all pod details as map
+    :return: dict
+    """
+    f = open('data.json')
+    data_as_json = json.load(f)
+    final_data = {}
+    for item in data_as_json['items']:
+        if 'app' in item['metadata']['labels']:
+            final_data[item['status']['podIP']] = item['metadata']['labels']['app']
+        else:
+            final_data[item['status']['podIP']] = item['metadata']['labels']['app-name']
+    f.close()
+    return final_data
+
+
 def read_pcap_file():
     """
     Read pcap file and generate CSV file
     :return: None
     """
+    # Get the ip to pod association
+    pod_details = get_pod_details()
     cap = pyshark.FileCapture('tcpData/final-output.pcap')
     csvfile = open("packet_data.csv", 'w')
     csvwriter = csv.writer(csvfile)
@@ -85,12 +118,11 @@ def read_pcap_file():
             rtt_time = float(packet[packet.transport_layer].analysis_ack_rtt)
             end_time = datetime.datetime.fromtimestamp(float(packet.frame_info.time_epoch)) + datetime.timedelta(seconds=rtt_time)
             csvwriter.writerow([packet.frame_info.time_epoch, end_time.timestamp(), packet[packet.transport_layer].analysis_ack_rtt,
-                                packet.ip.src, packet.ip.dst, packet[packet.transport_layer].seq,
+                                get_from_dict(pod_details, packet.ip.src), get_from_dict(pod_details, packet.ip.dst), packet[packet.transport_layer].seq,
                                 packet[packet.transport_layer].seq_raw])
         except Exception as e:
             csvwriter.writerow(
-                [packet.frame_info.time_epoch, packet.frame_info.time_epoch, -1, packet.ip.src,
-                 packet.ip.dst, count, count])
+                [packet.frame_info.time_epoch, packet.frame_info.time_epoch, -1, get_from_dict(pod_details, packet.ip.src), get_from_dict(pod_details, packet.ip.dst), count, count])
         count = count + 1
         # if count == 100:
         #     break
@@ -102,4 +134,4 @@ def read_pcap_file():
 if __name__ == '__main__':
     read_pcap_file()
     # generate_gantt_chart()
-    # generate_network_graph()
+    generate_network_graph()
