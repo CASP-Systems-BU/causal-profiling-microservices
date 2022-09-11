@@ -112,10 +112,11 @@ run_benchmark() {
   fi
   if [[ $on_cluster_client == [nN] ]]
   then
-    sed "s+http://localhost:8080+http://nginx-thrift-social-network${cluster_host_name}+g" ./scripts/social-network/read-user-timeline.lua
     cd ../../wrk2
+    sed -i "s+http://localhost:8080+http://nginx-thrift-social-network${cluster_host_name}+g" ./scripts/social-network/read-user-timeline.lua
     ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift-social-network${cluster_host_name}/wrk2-api/user-timeline/read > ../openshift/scripts/benchmark-exp-logs/${benchmark_file_name}
     cd -
+    pwd
   fi
   sleep 1m
   read
@@ -143,8 +144,8 @@ fi
 #read -p "Start from scratch? Y/N" scratch_choice
 echo "Please make sure you have logged in to your kubernetes cluster....."
 #Changing config based on choice
-#pre_deployment
-#deploy_restart_benchmark
-#pre_benchmark
+pre_deployment
+deploy_restart_benchmark
+pre_benchmark
 run_benchmark
-#post_benchmark
+post_benchmark
