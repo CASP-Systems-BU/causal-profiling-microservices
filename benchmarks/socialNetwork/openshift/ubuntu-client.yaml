@@ -23,6 +23,11 @@ spec:
       containers:
       - name: ubuntu-client
         image: ubuntu
+        resources:
+          requests:
+            cpu: 1
+            memory: 2Gi
+            ephemeral-storage: 2Gi
         command:  ["/bin/sh", "-c"]
         args:
           - apt-get -y update &&
