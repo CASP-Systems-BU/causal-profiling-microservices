@@ -58,7 +58,7 @@ deploy_restart_benchmark() {
   fi
   sleep 60
   ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
-  oc cp "/Users/acemaster/Documents/BU_Code/RA/causal-profiling-microservices/benchmarks" social-network/"${ubuntuclient}":/root
+  oc cp "../../../../benchmarks" social-network/"${ubuntuclient}":/root
   oc exec "$ubuntuclient" -- bash -c "cd /root/benchmarks/socialNetwork/wrk2 && make clean && make"
   sleep 120
 }
