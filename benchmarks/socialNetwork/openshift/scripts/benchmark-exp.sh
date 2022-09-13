@@ -10,19 +10,30 @@
 #done < "$input"
 
 #Running same benchmark multiple times for same type
+benchmark_count=10
 input="benchmark-input.txt"
 while IFS= read -r line
 do
-  file_args=""
   args=($line)
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 1
-  for (( c=1; c<=6; c++ ))
+  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 3
+  for (( c=1; c<=benchmark_count; c++ ))
   do
-    file_args+="benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-${c}.log "
+   ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 3
+    cp benchmark-exp-logs/no-tracing-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/no-tracing-benchmark-${args[3]}-${c}.log
+  done
+  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 1
+  for (( c=1; c<=benchmark_count; c++ ))
+  do
     ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
     cp benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-${c}.log
   done
-  hdr-plot --output benchmark-plot/benchmark-tcpdump-exp-"${args[3]}".png --title "Tcpdump Benchmark for ${args[3]} rps" $file_args
+  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 2
+  for (( c=1; c<=benchmark_count; c++ ))
+  do
+    ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
+    cp benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-${c}.log
+  done
+  python hdr-plot-generator.py --title "Plot for ${args[3]} requests per second" --output test.png Jaeger:benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-{}.log No-tracing:benchmark-exp-logs/no-tracing-exp/no-tracing-benchmark-${args[3]}-{}.log TCPDump:benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-{}.log
 done < "$input"
 
 #input="benchmark-input.txt"
