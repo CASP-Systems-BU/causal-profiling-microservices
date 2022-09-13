@@ -1,12 +1,28 @@
 #!/bin/bash
+#input="benchmark-input.txt"
+#while IFS= read -r line
+#do
+#  args=($line)
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 3
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
+#  hdr-plot --output benchmark-plot/benchmark-"${args[3]}".png --title "Benchmark for ${args[3]} rps" benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-benchmark-${args[3]}.log
+#done < "$input"
+
+#Running same benchmark multiple times for same type
 input="benchmark-input.txt"
 while IFS= read -r line
 do
+  file_args=""
   args=($line)
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 3
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
-  hdr-plot --output benchmark-plot/benchmark-"${args[3]}".png --title "Benchmark for ${args[3]} rps" benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-benchmark-${args[3]}.log
+  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 1
+  for (( c=1; c<=6; c++ ))
+  do
+    file_args+="benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-${c}.log "
+    ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
+    cp benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-${c}.log
+  done
+  hdr-plot --output benchmark-plot/benchmark-tcpdump-exp-"${args[3]}".png --title "Tcpdump Benchmark for ${args[3]} rps" $file_args
 done < "$input"
 
 #input="benchmark-input.txt"

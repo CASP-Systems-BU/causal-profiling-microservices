@@ -129,7 +129,7 @@ connections=$2
 benchmark_duration=$3
 total_rps=$4
 scratch_choice=$5
-on_cluster_client="n"
+on_cluster_client="y"
 benchmark_file_name=""
 cluster_host_name=".apps.firm.zp7q.p1.openshiftapps.com"
 #Deciding benchmark file name
