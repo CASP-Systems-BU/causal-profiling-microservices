@@ -33,7 +33,7 @@ do
     ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
     cp benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-${c}.log
   done
-  python hdr-plot-generator.py --title "Plot for ${args[3]} requests per second" --output test.png Jaeger:benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-{}.log No-tracing:benchmark-exp-logs/no-tracing-exp/no-tracing-benchmark-${args[3]}-{}.log TCPDump:benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-{}.log
+  python hdr-plot-generator.py --title "Plot for ${args[3]} requests per second" --output experiment-${args[3]}.png Jaeger:benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-{}.log No-tracing:benchmark-exp-logs/no-tracing-exp/no-tracing-benchmark-${args[3]}-{}.log TCPDump:benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-{}.log
 done < "$input"
 
 #input="benchmark-input.txt"
