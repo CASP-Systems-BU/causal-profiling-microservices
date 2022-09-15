@@ -60,6 +60,7 @@ deploy_restart_benchmark() {
   ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
   oc cp "../../../../benchmarks" social-network/"${ubuntuclient}":/root
   oc exec "$ubuntuclient" -- bash -c "cd /root/benchmarks/socialNetwork/wrk2 && make clean && make"
+  oc exec "$ubuntuclient" -- bash -c "cd /root/benchmarks/socialNetwork && python3 scripts/init_social_graph.py"
   sleep 120
 }
 
@@ -146,6 +147,6 @@ echo "Please make sure you have logged in to your kubernetes cluster....."
 #Changing config based on choice
 pre_deployment
 deploy_restart_benchmark
-pre_benchmark
-run_benchmark
-post_benchmark
+#pre_benchmark
+#run_benchmark
+#post_benchmark

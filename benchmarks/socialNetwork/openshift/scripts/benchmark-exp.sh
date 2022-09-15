@@ -1,40 +1,40 @@
 #!/bin/bash
-#input="benchmark-input.txt"
-#while IFS= read -r line
-#do
-#  args=($line)
-#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 3
-#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
-#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
-#  hdr-plot --output benchmark-plot/benchmark-"${args[3]}".png --title "Benchmark for ${args[3]} rps" benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-benchmark-${args[3]}.log
-#done < "$input"
-
-#Running same benchmark multiple times for same type
-benchmark_count=10
 input="benchmark-input.txt"
 while IFS= read -r line
 do
   args=($line)
   ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 3
-  for (( c=1; c<=benchmark_count; c++ ))
-  do
-   ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 3
-    cp benchmark-exp-logs/no-tracing-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/no-tracing-benchmark-${args[3]}-${c}.log
-  done
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 1
-  for (( c=1; c<=benchmark_count; c++ ))
-  do
-    ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
-    cp benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-${c}.log
-  done
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 2
-  for (( c=1; c<=benchmark_count; c++ ))
-  do
-    ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
-    cp benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-${c}.log
-  done
-  python hdr-plot-generator.py --title "Plot for ${args[3]} requests per second" --output experiment-${args[3]}.png Jaeger:benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-{}.log No-tracing:benchmark-exp-logs/no-tracing-exp/no-tracing-benchmark-${args[3]}-{}.log TCPDump:benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-{}.log
+  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
+  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
+  hdr-plot --output benchmark-plot/benchmark-"${args[3]}".png --title "Benchmark for ${args[3]} rps" benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-benchmark-${args[3]}.log
 done < "$input"
+
+#Running same benchmark multiple times for same type
+#benchmark_count=10
+#input="benchmark-input.txt"
+#while IFS= read -r line
+#do
+#  args=($line)
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 3
+#  for (( c=1; c<=benchmark_count; c++ ))
+#  do
+#   ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 3
+#    cp benchmark-exp-logs/no-tracing-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/no-tracing-benchmark-${args[3]}-${c}.log
+#  done
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 1
+#  for (( c=1; c<=benchmark_count; c++ ))
+#  do
+#    ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
+#    cp benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-${c}.log
+#  done
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 2
+#  for (( c=1; c<=benchmark_count; c++ ))
+#  do
+#    ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
+#    cp benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-${c}.log
+#  done
+#  python hdr-plot-generator.py --title "Plot for ${args[3]} requests per second" --output experiment-${args[3]}.png Jaeger:benchmark-exp-logs/no-tracing-exp/jaeger-benchmark-${args[3]}-{}.log No-tracing:benchmark-exp-logs/no-tracing-exp/no-tracing-benchmark-${args[3]}-{}.log TCPDump:benchmark-exp-logs/no-tracing-exp/tcpdump-benchmark-${args[3]}-{}.log
+#done < "$input"
 
 #input="benchmark-input.txt"
 #while IFS= read -r line

@@ -101,3 +101,8 @@ If local image customization is needed, then the script
 can be used to create them. In this case the relevant yaml files will need to
 be edited to refer to the new images.
 e.g., `image: image-registry.openshift-image-registry.svc:5000/social-network/social-network-microservices:openshift`
+
+
+./wrk -D exp -t 2 -c 50 -d 60s -R 20 -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read
+
+./wrk -D exp -t 2 -c 50 -d 60s -R 20 -L -P http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read?user_id=1&start=1&stop=10
