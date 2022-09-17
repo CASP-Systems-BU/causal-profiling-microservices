@@ -33,8 +33,19 @@ spec:
       labels:
         death-star-project: social-network
         app: user-timeline-redis
+        micro-service: user-timeline
       name: user-timeline-redis
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - user-timeline
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: user-timeline-redis
         image: redis

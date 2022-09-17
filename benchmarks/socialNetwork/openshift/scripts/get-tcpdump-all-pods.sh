@@ -104,6 +104,8 @@ post_benchmark() {
 }
 
 run_benchmark() {
+  echo "Saving benchmark pod placement"
+  oc get pods -n social-network -o wide > benchmark-placement/${benchmark_file_name}
   echo "Running workload...."
   if [[ $on_cluster_client == [yY] ]]
   then
@@ -120,7 +122,6 @@ run_benchmark() {
     pwd
   fi
   sleep 1m
-  read
 }
 
 read -p "Script mode: 1.TCP Dump 2.Jaeger 3.No Jaeger 4. Mock benchmark" input_choice
@@ -147,6 +148,6 @@ echo "Please make sure you have logged in to your kubernetes cluster....."
 #Changing config based on choice
 pre_deployment
 deploy_restart_benchmark
-#pre_benchmark
-#run_benchmark
-#post_benchmark
+pre_benchmark
+run_benchmark
+post_benchmark
