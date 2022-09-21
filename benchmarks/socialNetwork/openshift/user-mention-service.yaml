@@ -35,6 +35,16 @@ spec:
         app: user-mention-service
       name: user-mention-service
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: user-mention-service
         image: yg397/social-network-microservices:root_cause-del

@@ -42,6 +42,16 @@ spec:
         app: write-home-timeline-rabbitmq
       name: write-home-timeline-rabbitmq
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: write-home-timeline-rabbitmq
         image: rabbitmq

@@ -35,8 +35,19 @@ spec:
       labels:
         death-star-project: social-network
         app: compose-post-service
+        micro-service: set-2
       name: compose-post-service
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: compose-post-service
         image: yg397/social-network-microservices:root_cause-del

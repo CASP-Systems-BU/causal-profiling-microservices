@@ -35,6 +35,16 @@ spec:
         app: compose-post-redis
       name: compose-post-redis
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-2
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: compose-post-redis
         image: redis

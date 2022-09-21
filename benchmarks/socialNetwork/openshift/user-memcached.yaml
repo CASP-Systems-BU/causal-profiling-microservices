@@ -35,6 +35,16 @@ spec:
         app: user-memcached
       name: user-memcached
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: user-memcached
         image: memcached

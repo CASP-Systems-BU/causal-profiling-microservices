@@ -35,6 +35,16 @@ spec:
         app: home-timeline-redis
       name: home-timeline-redis
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-2
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: home-timeline-redis
         image: redis

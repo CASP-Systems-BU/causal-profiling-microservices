@@ -35,6 +35,16 @@ spec:
         app: social-graph-mongodb
       name: social-graph-mongodb
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-2
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: social-graph-mongodb
         image: mongo:4.4.6

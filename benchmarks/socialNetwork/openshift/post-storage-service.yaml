@@ -35,6 +35,16 @@ spec:
         app: post-storage-service
       name: post-storage-service
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-2
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: post-storage-service
         image: yg397/social-network-microservices:root_cause-del

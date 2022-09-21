@@ -37,6 +37,16 @@ spec:
         app: write-home-timeline-service
       name: write-home-timeline-service
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: write-home-timeline-service
         image: yg397/social-network-microservices:root_cause-del

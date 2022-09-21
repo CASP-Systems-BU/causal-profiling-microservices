@@ -47,6 +47,7 @@ deploy_restart_benchmark() {
     sh deploy-all-services-and-configurations.sh
     total_pods=$(oc get pods  -n social-network --output name | wc -l)
     while [ $(oc get pods  -n social-network --output name --field-selector=status.phase=Running | wc -l) -ne "$total_pods" ]; do
+       echo "Watiing for pods to be up....."
        sleep 60
     done
   fi
@@ -81,6 +82,7 @@ pre_benchmark() {
     echo "Wait for all ksniff pods to be up...."
     total_pods=$(oc get pods  -n social-network --output name | wc -l)
     while [ $(oc get pods  -n social-network --output name --field-selector=status.phase=Running | wc -l) -ne "$total_pods" ]; do
+       echo "Watiing for pods to be up....."
        sleep 60
     done
   fi

@@ -35,6 +35,16 @@ spec:
         app: user-service
       name: user-service
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: user-service
         image: yg397/social-network-microservices:root_cause-del

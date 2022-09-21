@@ -37,6 +37,16 @@ spec:
         app: nginx-thrift
       name: nginx-thrift
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-2
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: nginx-thrift
         image: yg397/openresty-thrift:xenial

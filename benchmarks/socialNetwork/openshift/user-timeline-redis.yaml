@@ -44,7 +44,7 @@ spec:
                   - key: micro-service
                     operator: In
                     values:
-                      - user-timeline
+                      - set-1
               topologyKey: kubernetes.io/hostname
       containers:
       - name: user-timeline-redis

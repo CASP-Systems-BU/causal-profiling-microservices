@@ -33,7 +33,7 @@ spec:
       labels:
         death-star-project: social-network
         app: user-timeline-service
-        micro-service: user-timeline
+        micro-service: set-1
       name: user-timeline-service
     spec:
       containers:

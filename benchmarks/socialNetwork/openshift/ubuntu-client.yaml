@@ -20,6 +20,16 @@ spec:
         app: ubuntu-client
       name: ubuntu-client
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: ubuntu-client
         image: ubuntu

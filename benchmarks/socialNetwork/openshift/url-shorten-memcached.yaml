@@ -35,6 +35,16 @@ spec:
         app: url-shorten-memcached
       name: url-shorten-memcached
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: url-shorten-memcached
         image: memcached

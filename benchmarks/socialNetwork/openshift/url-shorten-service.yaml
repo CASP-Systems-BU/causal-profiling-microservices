@@ -35,6 +35,16 @@ spec:
         app: url-shorten-service
       name: url-shorten-service
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: micro-service
+                    operator: In
+                    values:
+                      - set-1
+              topologyKey: kubernetes.io/hostname
       containers:
       - name: url-shorten-service
         image: yg397/social-network-microservices:root_cause-del
