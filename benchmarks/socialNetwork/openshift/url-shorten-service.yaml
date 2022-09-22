@@ -43,7 +43,7 @@ spec:
                   - key: micro-service
                     operator: In
                     values:
-                      - set-1
+                      - set-2
               topologyKey: kubernetes.io/hostname
       containers:
       - name: url-shorten-service
