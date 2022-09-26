@@ -150,6 +150,6 @@ echo "Please make sure you have logged in to your kubernetes cluster....."
 #Changing config based on choice
 pre_deployment
 deploy_restart_benchmark
-#pre_benchmark
-#run_benchmark
-#post_benchmark
+pre_benchmark
+run_benchmark
+post_benchmark
