@@ -1,37 +1,98 @@
-NAME                                           READY   STATUS    RESTARTS      AGE   IP             NODE                           NOMINATED NODE   READINESS GATES
-compose-post-redis-fdf9d45b5-l6mg8             1/1     Running   0             34h   10.129.2.28    ip-10-0-189-20.ec2.internal    <none>           <none>
-compose-post-service-5dc684d8d-57bj2           1/1     Running   0             34h   10.128.2.65    ip-10-0-141-135.ec2.internal   <none>           <none>
-home-timeline-redis-d76666cd5-bcvwp            1/1     Running   0             34h   10.129.4.26    ip-10-0-180-187.ec2.internal   <none>           <none>
-home-timeline-service-59875f488b-5rz5c         1/1     Running   0             34h   10.130.2.143   ip-10-0-159-241.ec2.internal   <none>           <none>
-jaeger-agent-5c799c94f5-glr5c                  1/1     Running   0             34h   10.129.2.29    ip-10-0-189-20.ec2.internal    <none>           <none>
-ksniff-6rwc2                                   1/1     Running   0             17m   10.128.4.38    ip-10-0-153-68.ec2.internal    <none>           <none>
-media-frontend-854c9965db-2j7sk                1/1     Running   0             34h   10.128.2.66    ip-10-0-141-135.ec2.internal   <none>           <none>
-media-memcached-78546b46cb-mjch2               1/1     Running   0             34h   10.131.0.32    ip-10-0-177-119.ec2.internal   <none>           <none>
-media-mongodb-6778db4b5d-s5vvg                 1/1     Running   0             34h   10.130.2.144   ip-10-0-159-241.ec2.internal   <none>           <none>
-media-service-5ccc44b447-r9nmf                 1/1     Running   0             34h   10.129.4.27    ip-10-0-180-187.ec2.internal   <none>           <none>
-nginx-thrift-66fbd578b6-cmqcd                  1/1     Running   0             34h   10.128.4.30    ip-10-0-153-68.ec2.internal    <none>           <none>
-post-storage-memcached-6dd9f5b668-kzl55        1/1     Running   0             34h   10.131.2.25    ip-10-0-233-99.ec2.internal    <none>           <none>
-post-storage-mongodb-7d5f59bdb4-nw6dx          1/1     Running   0             34h   10.131.0.33    ip-10-0-177-119.ec2.internal   <none>           <none>
-post-storage-service-6586d7c579-ps69j          1/1     Running   0             34h   10.128.2.67    ip-10-0-141-135.ec2.internal   <none>           <none>
-social-graph-mongodb-6c56ffdcf6-bh8f4          1/1     Running   0             34h   10.129.2.30    ip-10-0-189-20.ec2.internal    <none>           <none>
-social-graph-redis-6945f8d9b-j587k             1/1     Running   0             34h   10.131.2.26    ip-10-0-233-99.ec2.internal    <none>           <none>
-social-graph-service-99bbf744d-hxgqt           1/1     Running   0             34h   10.129.4.28    ip-10-0-180-187.ec2.internal   <none>           <none>
-text-service-5f588655b9-vb67c                  1/1     Running   0             34h   10.128.4.31    ip-10-0-153-68.ec2.internal    <none>           <none>
-ubuntu-client-85897b9f48-xw2rh                 1/1     Running   0             34h   10.130.2.145   ip-10-0-159-241.ec2.internal   <none>           <none>
-unique-id-service-5c74c459f4-2fzfl             1/1     Running   0             34h   10.129.2.31    ip-10-0-189-20.ec2.internal    <none>           <none>
-url-shorten-memcached-6f8b9477-5pgnc           1/1     Running   0             34h   10.131.0.34    ip-10-0-177-119.ec2.internal   <none>           <none>
-url-shorten-mongodb-7f4bcc8d9f-4fb46           1/1     Running   0             34h   10.128.2.68    ip-10-0-141-135.ec2.internal   <none>           <none>
-url-shorten-service-86587f844-cmn7s            1/1     Running   0             34h   10.128.4.32    ip-10-0-153-68.ec2.internal    <none>           <none>
-user-memcached-9999b7fff-vdqkw                 1/1     Running   0             34h   10.129.4.29    ip-10-0-180-187.ec2.internal   <none>           <none>
-user-mention-service-74ffb97d68-6qscx          1/1     Running   0             34h   10.130.2.146   ip-10-0-159-241.ec2.internal   <none>           <none>
-user-mongodb-55595c4ff5-nvnn9                  1/1     Running   0             34h   10.131.2.27    ip-10-0-233-99.ec2.internal    <none>           <none>
-user-service-75cf6b647c-srb82                  1/1     Running   0             34h   10.128.2.69    ip-10-0-141-135.ec2.internal   <none>           <none>
-user-timeline-mongodb-69659c6799-dqt4j         1/1     Running   0             34h   10.131.0.35    ip-10-0-177-119.ec2.internal   <none>           <none>
-user-timeline-redis-58868cccb9-bg2br           1/1     Running   0             34h   10.129.2.32    ip-10-0-189-20.ec2.internal    <none>           <none>
-user-timeline-service-6794746b78-fz2qp         1/1     Running   0             34h   10.131.2.28    ip-10-0-233-99.ec2.internal    <none>           <none>
-write-home-timeline-rabbitmq-8c7979687-px5mg   1/1     Running   0             34h   10.130.2.147   ip-10-0-159-241.ec2.internal   <none>           <none>
-write-home-timeline-service-7584db6bf7-vchth   1/1     Running   2 (34h ago)   34h   10.129.4.30    ip-10-0-180-187.ec2.internal   <none>           <none>
+Pod
+P
+ksniff-jgs4r
+Running
+1/1	0	No owner	2.0 MiB	-
+1 minute ago
 
+Pod
+P
+ksniff-kgw24
+Running
+1/1	0	No owner	2.0 MiB	0.000 cores
+1 minute ago
 
+Pod
+P
+ksniff-l7phj
+Running
+1/1	0	No owner	2.0 MiB	0.000 cores
+1 minute ago
 
-True True True True True True True True True True True True True True True True True True True True True True True True True True True True True True True
+Pod
+P
+ksniff-lfbcz
+Running
+1/1	0	No owner	2.1 MiB	-
+1 minute ago
+
+Pod
+P
+ksniff-nzdt2
+Running
+1/1	0	No owner	2.0 MiB	0.000 cores
+1 minute ago
+
+Pod
+P
+ksniff-pb8tw
+Failed
+0/0	0	No owner	-	-
+1 minute ago
+
+Pod
+P
+ksniff-pw2tn
+Running
+1/1	0	No owner	2.0 MiB	-
+1 minute ago
+
+Pod
+P
+ksniff-qft9g
+Running
+1/1	0	No owner	2.0 MiB	-
+1 minute ago
+
+Pod
+P
+ksniff-ql25d
+Running
+1/1	0	No owner	2.0 MiB	0.000 cores
+1 minute ago
+
+Pod
+P
+ksniff-sz6vg
+Running
+1/1	0	No owner	2.0 MiB	-
+1 minute ago
+
+Pod
+P
+ksniff-vbn4b
+Running
+1/1	0	No owner	2.0 MiB	-
+1 minute ago
+
+Pod
+P
+ksniff-wjdnf
+Failed
+0/0	0	No owner	-	-
+1 minute ago
+
+Pod
+P
+ksniff-wp5k4
+Running
+1/1	0	No owner	2.1 MiB	-
+1 minute ago
+
+Pod
+P
+ksniff-xgg25
+Running
+1/1	0	No owner	2.0 MiB	-
+1 minute ago
+

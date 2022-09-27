@@ -74,9 +74,12 @@ pre_benchmark() {
     echo "Starting tcpdump for all pods ....."
     pid_arr=()
     for pod in $ALL_PODS; do
-      echo "Starting ksniff on pod: $pod"
-      oc sniff -p "$pod" -n social-network -o tcpData/output-"$pod".pcap & pid=$!
-      pid_arr+=("$pid")
+      if [[ ${pod} != *"jaeger"* && ${pod} != *"ubuntu-client"* && ${pod} != *"media-frontend"* ]]
+      then
+        echo "Starting ksniff on pod: $pod"
+        oc sniff -p "$pod" -n social-network -o tcpData/output-"$pod".pcap & pid=$!
+        pid_arr+=("$pid")
+      fi
     done
     sleep 60
     echo "Wait for all ksniff pods to be up...."

@@ -45,14 +45,14 @@ spec:
                   - key: micro-service
                     operator: In
                     values:
-                      - set-1
+                      - set-2
               topologyKey: kubernetes.io/hostname
       containers:
       - name: nginx-thrift
         image: yg397/openresty-thrift:xenial
         resources:
           requests:
-            cpu: 2
+            cpu: 1
             memory: 2Gi
         ports:
         - containerPort: 8080
