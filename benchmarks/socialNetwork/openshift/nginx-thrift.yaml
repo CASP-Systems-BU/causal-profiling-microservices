@@ -32,6 +32,15 @@ spec:
       app: nginx-thrift
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/proxyCPU: "1"
+        sidecar.istio.io/proxyCPULimit: "2"
+        sidecar.istio.io/proxyMemory: 500Mi
+        sidecar.istio.io/proxyMemoryLimit: 1Gi
+        traffic.sidecar.istio.io/includeInboundPorts: ""
+        traffic.sidecar.istio.io/excludeInboundPorts: "80,443"
+        traffic.sidecar.istio.io/excludeOutboundIPRanges: "10.128.0.0/16"
+        sidecar.istio.io/inject: 'false'
       labels:
         death-star-project: social-network
         app: nginx-thrift
@@ -52,7 +61,7 @@ spec:
         image: yg397/openresty-thrift:xenial
         resources:
           requests:
-            cpu: 1
+            cpu: 2
             memory: 2Gi
         ports:
         - containerPort: 8080

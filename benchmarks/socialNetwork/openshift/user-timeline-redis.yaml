@@ -30,6 +30,11 @@ spec:
       app: user-timeline-redis
   template:
     metadata:
+#      annotations:
+#        sidecar.istio.io/proxyCPU: "1"
+#        sidecar.istio.io/proxyCPULimit: "2"
+#        sidecar.istio.io/proxyMemory: 1Gi
+#        sidecar.istio.io/proxyMemoryLimit: 2Gi
       labels:
         death-star-project: social-network
         app: user-timeline-redis
@@ -49,6 +54,10 @@ spec:
       containers:
       - name: user-timeline-redis
         image: redis
+        resources:
+          requests:
+            cpu: 2
+            memory: 2Gi
       restartPolicy: Always
       imagePullSecrets:
       - name: regcred

@@ -101,7 +101,7 @@ def read_pcap_file():
     cap = pyshark.FileCapture('tcpData/final-output.pcap')
     csvfile = open("packet_data.csv", 'w')
     csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(['Start Time', 'End Time', 'RTT', 'SRC IP', 'Dest IP', 'Seq', 'Seq Raw'])
+    csvwriter.writerow(['Start Time', 'End Time', 'RTT', 'SRC IP', 'Dest IP', 'Seq', 'Seq Raw',"Headers"])
     count = 0
     count_no_ip = 0
     for packet in cap:
@@ -113,17 +113,27 @@ def read_pcap_file():
         # print(str(packet.ip))
         # print(str(dir(packet.frame_info)))
         # print(str(packet.layers))
-        try:
-            # print(packet[packet.transport_layer].seq)
-            rtt_time = float(packet[packet.transport_layer].analysis_ack_rtt)
-            end_time = datetime.datetime.fromtimestamp(float(packet.frame_info.time_epoch)) + datetime.timedelta(seconds=rtt_time)
-            csvwriter.writerow([packet.frame_info.time_epoch, end_time.timestamp(), packet[packet.transport_layer].analysis_ack_rtt,
-                                get_from_dict(pod_details, packet.ip.src), get_from_dict(pod_details, packet.ip.dst), packet[packet.transport_layer].seq,
-                                packet[packet.transport_layer].seq_raw])
-        except Exception as e:
-            csvwriter.writerow(
-                [packet.frame_info.time_epoch, packet.frame_info.time_epoch, -1, get_from_dict(pod_details, packet.ip.src), get_from_dict(pod_details, packet.ip.dst), count, count])
-        count = count + 1
+        header_map = {}
+        request_id = "None"
+        if "http" in packet and hasattr(packet.http, 'request_line'):
+            lists_request = packet.http.request_line.all_fields
+            for _, request_header in enumerate(lists_request):
+                header_key = request_header.showname_key
+                header_value = request_header.showname_value.replace('\\n', '').replace('\\r', '')
+                header_map[header_key] = header_value
+        if "x-request-id" in header_map:
+            request_id = header_map['x-request-id']
+            try:
+                # print(packet[packet.transport_layer].seq)
+                rtt_time = float(packet[packet.transport_layer].analysis_ack_rtt)
+                end_time = datetime.datetime.fromtimestamp(float(packet.frame_info.time_epoch)) + datetime.timedelta(seconds=rtt_time)
+                csvwriter.writerow([packet.frame_info.time_epoch, end_time.timestamp(), packet[packet.transport_layer].analysis_ack_rtt,
+                                    get_from_dict(pod_details, packet.ip.src), get_from_dict(pod_details, packet.ip.dst), packet[packet.transport_layer].seq,
+                                    packet[packet.transport_layer].seq_raw, request_id])
+            except Exception as e:
+                csvwriter.writerow(
+                    [packet.frame_info.time_epoch, packet.frame_info.time_epoch, -1, get_from_dict(pod_details, packet.ip.src), get_from_dict(pod_details, packet.ip.dst), count, count, request_id])
+            count = count + 1
         # if count == 100:
         #     break
     print(count)
@@ -134,4 +144,4 @@ def read_pcap_file():
 if __name__ == '__main__':
     read_pcap_file()
     # generate_gantt_chart()
-    generate_network_graph()
+    # generate_network_graph()

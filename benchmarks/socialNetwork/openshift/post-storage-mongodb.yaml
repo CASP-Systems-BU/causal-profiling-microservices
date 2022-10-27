@@ -30,6 +30,11 @@ spec:
       app: post-storage-mongodb
   template:
     metadata:
+#      annotations:
+#        sidecar.istio.io/proxyCPU: "1"
+#        sidecar.istio.io/proxyCPULimit: "2"
+#        sidecar.istio.io/proxyMemory: 1Gi
+#        sidecar.istio.io/proxyMemoryLimit: 2Gi
       labels:
         death-star-project: social-network
         app: post-storage-mongodb
@@ -48,6 +53,10 @@ spec:
       containers:
       - name: post-storage-mongodb
         image: mongo:4.4.6
+        resources:
+          requests:
+            cpu: 2
+            memory: 2Gi
         volumeMounts:
           - name: my-data
             mountPath: "/data/db"

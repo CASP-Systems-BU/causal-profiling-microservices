@@ -30,6 +30,11 @@ spec:
       app: user-timeline-service
   template:
     metadata:
+#      annotations:
+#        sidecar.istio.io/proxyCPU: "1"
+#        sidecar.istio.io/proxyCPULimit: "2"
+#        sidecar.istio.io/proxyMemory: 1Gi
+#        sidecar.istio.io/proxyMemoryLimit: 2Gi
       labels:
         death-star-project: social-network
         app: user-timeline-service
@@ -48,6 +53,10 @@ spec:
       containers:
       - name: user-timeline-service
         image: yg397/social-network-microservices:root_cause-del
+        resources:
+          requests:
+            cpu: 2
+            memory: 2Gi
         command: ["UserTimelineService"]
         volumeMounts:
           - mountPath: /social-network-microservices/config/jaeger-config.yml

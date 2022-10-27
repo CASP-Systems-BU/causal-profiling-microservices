@@ -15,6 +15,8 @@ spec:
       app: ubuntu-client
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: 'false'
       labels:
         death-star-project: social-network
         app: ubuntu-client
@@ -36,7 +38,7 @@ spec:
         image: ubuntu
         resources:
           requests:
-            cpu: 1
+            cpu: 2
             memory: 2Gi
             ephemeral-storage: 2Gi
         command:  ["/bin/sh", "-c"]
