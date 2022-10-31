@@ -42,10 +42,18 @@ pre_deployment() {
         echo "Namespace is not there. Deploying Istio ...."
         sh deploy-istio.sh
       fi
+      if [[ $namespaceStatus == "Active" ]]
+      then
+        echo "Namespace is there. Enabling Istio...."
+        oc -n social-network create -f istio-attachment.yaml
+        oc label namespace social-network istio-injection=enabled
+      fi
   fi
   if [[ $input_choice -ne 4 ]]
     then
       echo "Disabling Istio on the namespace"
+      istioctl uninstall --purge -y
+      oc delete namespace istio-system
       oc -n social-network delete network-attachment-definition istio-cni
       oc label namespaces social-network istio-injection-
   fi
@@ -177,4 +185,4 @@ pre_deployment
 deploy_restart_benchmark
 pre_benchmark
 run_benchmark
-#post_benchmark
+post_benchmark

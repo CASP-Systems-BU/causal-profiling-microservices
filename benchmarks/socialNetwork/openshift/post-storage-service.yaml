@@ -55,7 +55,7 @@ spec:
         image: yg397/social-network-microservices:root_cause-del
         resources:
           requests:
-            cpu: 2
+            cpu: 3
             memory: 2Gi
         command: ["PostStorageService"]
         ports:
