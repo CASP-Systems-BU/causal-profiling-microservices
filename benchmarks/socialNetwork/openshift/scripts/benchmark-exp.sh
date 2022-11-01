@@ -3,9 +3,9 @@ input="benchmark-input.txt"
 while IFS= read -r line
 do
   args=($line)
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 3
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
-  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 3
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 1
+#  ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" n <<< 2
   ./get-tcpdump-all-pods.sh "${args[0]}" "${args[1]}" "${args[2]}" "${args[3]}" y <<< 4
   hdr-plot --output benchmark-plot/benchmark-"${args[3]}".png --title "Benchmark for ${args[3]} rps" benchmark-exp-logs/tcpdump-benchmark-${args[3]}.log benchmark-exp-logs/jaeger-benchmark-${args[3]}.log benchmark-exp-logs/no-tracing-benchmark-${args[3]}.log benchmark-exp-logs/istio-benchmark-${args[3]}.log
 done < "$input"

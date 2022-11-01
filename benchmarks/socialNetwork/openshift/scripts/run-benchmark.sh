@@ -4,19 +4,19 @@
 set_benchmark_file_name() {
   if [[ $input_choice -eq 1 ]]
   then
-    benchmark_file_name="tcpdump-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-tcpdump-benchmark-${total_rps}.log"
   fi
   if [[ $input_choice -eq 2 ]]
   then
-    benchmark_file_name="jaeger-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-jaeger-benchmark-${total_rps}.log"
   fi
   if [[ $input_choice -eq 3 ]]
   then
-    benchmark_file_name="no-tracing-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-no-tracing-benchmark-${total_rps}.log"
   fi
   if [[ $input_choice -eq 4 ]]
   then
-    benchmark_file_name="istio-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-istio-benchmark-${total_rps}.log"
   fi
 }
 
@@ -97,26 +97,26 @@ deploy_restart_benchmark() {
 pre_benchmark() {
   if [[ $input_choice -eq 1 ]]
   then
-    ALL_PODS=$(oc get pod -n social-network --field-selector=status.phase=Running -o custom-columns=name:metadata.name --no-headers)
-    rm -rf tcpData
-    mkdir tcpData
-    echo "Starting tcpdump for all pods ....."
-    pid_arr=()
-    for pod in $ALL_PODS; do
-      if [[ ${pod} != *"jaeger"* && ${pod} != *"ubuntu-client"* && ${pod} != *"media-frontend"* ]]
-      then
-        echo "Starting ksniff on pod: $pod"
-        oc sniff -p "$pod" -n social-network -o tcpData/output-"$pod".pcap & pid=$!
-        pid_arr+=("$pid")
-      fi
-    done
-    sleep 60
-    echo "Wait for all ksniff pods to be up...."
-    total_pods=$(oc get pods  -n social-network --output name | wc -l)
-    while [ $(oc get pods  -n social-network --output name --field-selector=status.phase=Running | wc -l) -ne "$total_pods" ]; do
-       echo "Watiing for pods to be up....."
-       sleep 60
-    done
+      ALL_PODS=$(oc get pod -n social-network --field-selector=status.phase=Running -o custom-columns=name:metadata.name --no-headers)
+      rm -rf tcpData
+      mkdir tcpData
+      echo "Starting tcpdump for all pods ....."
+      pid_arr=()
+      for pod in $ALL_PODS; do
+        if [[ ${pod} != *"jaeger"* && ${pod} != *"ubuntu-client"* && ${pod} != *"media-frontend"* ]]
+        then
+          echo "Starting ksniff on pod: $pod"
+          oc sniff -p "$pod" -n social-network -o tcpData/output-"$pod".pcap & pid=$!
+          pid_arr+=("$pid")
+        fi
+      done
+      sleep 60
+      echo "Wait for all ksniff pods to be up...."
+      total_pods=$(oc get pods  -n social-network --output name | wc -l)
+      while [ $(oc get pods  -n social-network --output name --field-selector=status.phase=Running | wc -l) -ne "$total_pods" ]; do
+         echo "Watiing for pods to be up....."
+         sleep 60
+      done
   fi
 }
 
@@ -140,19 +140,19 @@ post_benchmark() {
 
 run_benchmark() {
   echo "Saving benchmark pod placement"
-  oc get pods -n social-network -o wide > benchmark-placement/${benchmark_file_name}
+  oc get pods -n social-network -o wide > ${benchmark_output_path}/benchmark-placement/${benchmark_file_name}
   echo "Running workload...."
   if [[ $on_cluster_client == [yY] ]]
   then
     ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
     oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk2 && \
-          ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read" > benchmark-exp-logs/${benchmark_file_name}
+          ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
   fi
   if [[ $on_cluster_client == [nN] ]]
   then
     cd ../../wrk2
     sed -i "s+http://localhost:8080+http://nginx-thrift-social-network${cluster_host_name}+g" ./scripts/social-network/read-user-timeline.lua
-    ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift-social-network${cluster_host_name}/wrk2-api/user-timeline/read > ../openshift/scripts/benchmark-exp-logs/${benchmark_file_name}
+    ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift-social-network${cluster_host_name}/wrk2-api/user-timeline/read > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
     cd -
     pwd
   fi
@@ -161,11 +161,13 @@ run_benchmark() {
 
 read -p "Script mode: 1.TCP Dump 2.Jaeger 3.No Jaeger 4. With Istio" input_choice
 echo $input_choice
+benchmark_name="social-network"
 thread_count=$1
 connections=$2
 benchmark_duration=$3
 total_rps=$4
 scratch_choice=$5
+benchmark_output_path=$6
 on_cluster_client="y"
 benchmark_file_name=""
 cluster_host_name=".apps.firm.zp7q.p1.openshiftapps.com"
