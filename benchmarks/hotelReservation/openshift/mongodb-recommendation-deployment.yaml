@@ -34,6 +34,8 @@ spec:
           name: recommendation
       hostname: recommendation-db
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
       - name: recommendation
         persistentVolumeClaim:

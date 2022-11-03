@@ -34,6 +34,8 @@ spec:
           name: profile
       hostname: profile-db
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
       - name: profile
         persistentVolumeClaim:

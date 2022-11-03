@@ -48,8 +48,8 @@ TOKEN=$(oc whoami -t)
 oc project $PROJECT
 oc registry login \
   --insecure=true --skip-check -z default --token=$TOKEN \
-  image-registry-openshift-image-registry.apps.cogadvisor.openshiftv4test.com
-$EXEC login --namespace ${NS} ${TLSVERIFY} \
+  image-registry.openshift-image-registry.svc:5000
+$EXEC login ${TLSVERIFY} \
   -p $TOKEN -u kubeadmin $(oc registry info)
 
 REGISTRY=$(oc registry info)
@@ -62,11 +62,11 @@ for i in frontend geo profile rate recommend rsv search user
 do
   IMAGE=hotel_reserv_${i}_single_node
   echo Processing image ${IMAGE}
-  if [[ $($EXEC images --namespace ${NS} | grep $IMAGE | wc -l) -le 0 ]]; then
+  if [[ $($EXEC images | grep $IMAGE | wc -l) -le 0 ]]; then
     oc create imagestream ${IMAGE} -n ${NS} 2>/dev/null
     cd $ROOT_FOLDER
-    $EXEC build --namespace ${NS} ${TLSVERIFY} -t "$REGISTRY"/"$PROJECT"/"$IMAGE":"$TAG" -f Dockerfile .
-    $EXEC push --namespace ${NS} ${TLSVERIFY} "$REGISTRY"/"$PROJECT"/"$IMAGE":"$TAG"
+    $EXEC build ${TLSVERIFY} -t "$REGISTRY"/"$PROJECT"/"$IMAGE":"$TAG" -f Dockerfile .
+    $EXEC push ${TLSVERIFY} "$REGISTRY"/"$PROJECT"/"$IMAGE":"$TAG"
     cd $ROOT_FOLDER
   else
     echo "$IMAGE image already exists"
@@ -75,6 +75,6 @@ do
 done
 
 echo "Images:"
-$EXEC images --namespace ${NS} | grep "$TAG"
+$EXEC images | grep "$TAG"
 
 cd - >/dev/null

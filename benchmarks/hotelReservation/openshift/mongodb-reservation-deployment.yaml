@@ -34,6 +34,8 @@ spec:
           name: reservation
       hostname: reservation-db
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
       - name: reservation
         persistentVolumeClaim:

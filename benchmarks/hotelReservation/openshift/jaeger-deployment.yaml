@@ -39,4 +39,6 @@ spec:
           protocol: UDP
         resources: {}
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
 status: {}

@@ -34,6 +34,8 @@ spec:
           name: user
       hostname: user-db
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
       - name: user
         persistentVolumeClaim:

@@ -34,6 +34,8 @@ spec:
           name: rate
       hostname: rate-db
       restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
       volumes:
       - name: rate
         persistentVolumeClaim:
