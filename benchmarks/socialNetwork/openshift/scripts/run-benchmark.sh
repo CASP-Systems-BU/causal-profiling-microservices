@@ -91,7 +91,14 @@ deploy_restart_benchmark() {
   echo ${ubuntuclient}
 #  oc cp "../../../../benchmarks" social-network/"${ubuntuclient}":/root
   oc exec "$ubuntuclient" -- bash -c "cd /root && git clone https://github.com/CASP-Systems-BU/causal-profiling-microservices.git"
-  oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk2 && make clean && make"
+  if [[ $benchmark_wrk_version -eq 1 ]]
+    then
+      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk && make clean && make"
+    fi
+    if [[ $benchmark_wrk_version -eq 2 ]]
+    then
+      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk2 && make clean && make"
+    fi
   oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork && python3 scripts/init_social_graph.py"
   sleep 120
 }
@@ -147,8 +154,16 @@ run_benchmark() {
   if [[ $on_cluster_client == [yY] ]]
   then
     ubuntuclient=$(oc -n social-network get pod | grep ubuntu-client- | cut -f 1 -d " ")
-    oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk2 && \
+    if [[ $benchmark_wrk_version -eq 1 ]]
+    then
+      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk && \
+          ./wrk -t ${thread_count} -c ${connections} -d ${benchmark_duration}s --latency -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
+    fi
+    if [[ $benchmark_wrk_version -eq 2 ]]
+    then
+      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk2 && \
           ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s ./scripts/social-network/read-user-timeline.lua http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
+    fi
   fi
   if [[ $on_cluster_client == [nN] ]]
   then
@@ -172,6 +187,7 @@ scratch_choice=$5
 benchmark_output_path=$6
 on_cluster_client="y"
 benchmark_file_name=""
+benchmark_wrk_version=1
 cluster_host_name=".apps.firm.zp7q.p1.openshiftapps.com"
 #Deciding benchmark file name
 set_benchmark_file_name
