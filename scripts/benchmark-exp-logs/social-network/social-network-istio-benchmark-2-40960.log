@@ -1,0 +1,30 @@
+Running 1m test @ http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read
+  2 threads and 40960 connections
+  Thread calibration: mean lat.: 462.865ms, rate sampling interval: 2390ms
+  Thread calibration: mean lat.: 323.978ms, rate sampling interval: 2330ms
+  Thread Stats   Avg      Stdev     99%   +/- Stdev
+    Latency     -nanus    -nanus   0.00us    0.00%
+    Req/Sec   111.00      2.00   113.00    100.00%
+  Latency Distribution (HdrHistogram - Recorded Latency)
+ 50.000%    0.00us
+ 75.000%    0.00us
+ 90.000%    0.00us
+ 99.000%    0.00us
+ 99.900%    0.00us
+ 99.990%    0.00us
+ 99.999%    0.00us
+100.000%    0.00us
+
+  Detailed Percentile spectrum:
+       Value   Percentile   TotalCount 1/(1-Percentile)
+
+       0.000     1.000000            0          inf
+#[Mean    =         -nan, StdDeviation   =         -nan]
+#[Max     =        0.000, Total count    =            0]
+#[Buckets =           27, SubBuckets     =         2048]
+----------------------------------------------------------
+  11884 requests in 1.01m, 3.56MB read
+  Socket errors: connect 12630, read 8, write 2137, timeout 778240
+  Non-2xx or 3xx responses: 8641
+Requests/sec:    195.99
+Transfer/sec:     60.08KB

@@ -1,0 +1,32 @@
+NAME                                            READY   STATUS    RESTARTS      AGE   IP              NODE                           NOMINATED NODE   READINESS GATES
+compose-post-redis-746787f998-sdwgv             1/1     Running   0             15m   10.128.8.238    ip-10-0-152-255.ec2.internal   <none>           <none>
+compose-post-service-76d9f4f474-44jxm           1/1     Running   0             15m   10.128.11.103   ip-10-0-246-194.ec2.internal   <none>           <none>
+home-timeline-redis-7fd9b9859d-lpxrg            1/1     Running   0             15m   10.128.8.239    ip-10-0-152-255.ec2.internal   <none>           <none>
+home-timeline-service-78499d5bb8-pfmrw          1/1     Running   0             15m   10.128.8.237    ip-10-0-152-255.ec2.internal   <none>           <none>
+jaeger-agent-5bc75fd76d-klj2p                   1/1     Running   0             14m   10.128.8.240    ip-10-0-152-255.ec2.internal   <none>           <none>
+media-frontend-9c6d489b7-95pss                  1/1     Running   0             14m   10.128.8.241    ip-10-0-152-255.ec2.internal   <none>           <none>
+media-memcached-7bb8b9c76f-vdg6d                1/1     Running   0             14m   10.128.8.242    ip-10-0-152-255.ec2.internal   <none>           <none>
+media-mongodb-75d6d6dd79-6fsfv                  1/1     Running   0             14m   10.128.8.243    ip-10-0-152-255.ec2.internal   <none>           <none>
+media-service-59c845569b-5d2vs                  1/1     Running   0             14m   10.128.8.244    ip-10-0-152-255.ec2.internal   <none>           <none>
+nginx-thrift-b7bcd669-wgsrb                     1/1     Running   0             14m   10.128.11.104   ip-10-0-246-194.ec2.internal   <none>           <none>
+post-storage-memcached-6f7cc67f45-x4sk4         1/1     Running   0             14m   10.128.8.245    ip-10-0-152-255.ec2.internal   <none>           <none>
+post-storage-mongodb-5dbc7c44cd-bwz4m           1/1     Running   0             14m   10.128.8.246    ip-10-0-152-255.ec2.internal   <none>           <none>
+post-storage-service-66bbb487f-6rjgx            1/1     Running   0             14m   10.128.8.247    ip-10-0-152-255.ec2.internal   <none>           <none>
+social-graph-mongodb-67d57cb87c-mmrg9           1/1     Running   0             14m   10.128.8.248    ip-10-0-152-255.ec2.internal   <none>           <none>
+social-graph-redis-5bf8f58fb9-r8bkc             1/1     Running   0             14m   10.128.8.249    ip-10-0-152-255.ec2.internal   <none>           <none>
+social-graph-service-59d9b7f87c-fpmdt           1/1     Running   0             14m   10.128.8.250    ip-10-0-152-255.ec2.internal   <none>           <none>
+text-service-9b65b86db-7l2cl                    1/1     Running   0             14m   10.128.8.251    ip-10-0-152-255.ec2.internal   <none>           <none>
+ubuntu-client-bddd78d5f-vskrt                   1/1     Running   0             14m   10.128.11.105   ip-10-0-246-194.ec2.internal   <none>           <none>
+unique-id-service-6d66c7f7d-dmp2h               1/1     Running   0             14m   10.128.11.106   ip-10-0-246-194.ec2.internal   <none>           <none>
+url-shorten-memcached-78b4686787-7dxrn          1/1     Running   0             14m   10.128.11.107   ip-10-0-246-194.ec2.internal   <none>           <none>
+url-shorten-mongodb-5cc6699669-jg7gv            1/1     Running   0             14m   10.128.11.108   ip-10-0-246-194.ec2.internal   <none>           <none>
+url-shorten-service-585b765544-v7pd5            1/1     Running   0             14m   10.128.11.109   ip-10-0-246-194.ec2.internal   <none>           <none>
+user-memcached-68b466dd57-gm252                 1/1     Running   0             14m   10.128.11.110   ip-10-0-246-194.ec2.internal   <none>           <none>
+user-mention-service-5bc785dffb-rhvd5           1/1     Running   0             14m   10.128.11.111   ip-10-0-246-194.ec2.internal   <none>           <none>
+user-mongodb-7f55b5bfdf-cppq4                   1/1     Running   0             14m   10.128.11.112   ip-10-0-246-194.ec2.internal   <none>           <none>
+user-service-847699594c-8272t                   1/1     Running   0             14m   10.128.11.113   ip-10-0-246-194.ec2.internal   <none>           <none>
+user-timeline-mongodb-75f4bf567c-5qtvq          1/1     Running   0             14m   10.128.11.114   ip-10-0-246-194.ec2.internal   <none>           <none>
+user-timeline-redis-69bc7c7ffc-rtsd8            1/1     Running   0             14m   10.128.11.115   ip-10-0-246-194.ec2.internal   <none>           <none>
+user-timeline-service-5f5cc4fb57-fqlrg          1/1     Running   0             14m   10.128.11.116   ip-10-0-246-194.ec2.internal   <none>           <none>
+write-home-timeline-rabbitmq-78c8674645-n8kvc   1/1     Running   0             14m   10.128.11.117   ip-10-0-246-194.ec2.internal   <none>           <none>
+write-home-timeline-service-796686cb5f-j7dc4    1/1     Running   2 (14m ago)   14m   10.128.11.118   ip-10-0-246-194.ec2.internal   <none>           <none>

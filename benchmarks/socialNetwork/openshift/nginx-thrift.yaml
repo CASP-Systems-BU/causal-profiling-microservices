@@ -59,10 +59,10 @@ spec:
       containers:
       - name: nginx-thrift
         image: yg397/openresty-thrift:xenial
-        resources:
-          requests:
-            cpu: 2
-            memory: 2Gi
+#        resources:
+#          requests:
+#            cpu: 2
+#            memory: 2Gi
         ports:
         - containerPort: 8080
         volumeMounts:

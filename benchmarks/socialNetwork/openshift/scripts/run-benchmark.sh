@@ -4,19 +4,19 @@
 set_benchmark_file_name() {
   if [[ $input_choice -eq 1 ]]
   then
-    benchmark_file_name="${benchmark_name}-tcpdump-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-tcpdump-benchmark-${thread_count}-${connections}.log"
   fi
   if [[ $input_choice -eq 2 ]]
   then
-    benchmark_file_name="${benchmark_name}-jaeger-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-jaeger-benchmark-${thread_count}-${connections}.log"
   fi
   if [[ $input_choice -eq 3 ]]
   then
-    benchmark_file_name="${benchmark_name}-no-tracing-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-no-tracing-benchmark-${thread_count}-${connections}.log"
   fi
   if [[ $input_choice -eq 4 ]]
   then
-    benchmark_file_name="${benchmark_name}-istio-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-istio-benchmark-${thread_count}-${connections}.log"
   fi
 }
 
@@ -92,13 +92,13 @@ deploy_restart_benchmark() {
 #  oc cp "../../../../benchmarks" social-network/"${ubuntuclient}":/root
   oc exec "$ubuntuclient" -- bash -c "cd /root && git clone https://github.com/CASP-Systems-BU/causal-profiling-microservices.git"
   if [[ $benchmark_wrk_version -eq 1 ]]
-    then
-      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk && make clean && make"
-    fi
-    if [[ $benchmark_wrk_version -eq 2 ]]
-    then
-      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk2 && make clean && make"
-    fi
+  then
+    oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk && make clean && make"
+  fi
+  if [[ $benchmark_wrk_version -eq 2 ]]
+  then
+    oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork/wrk2 && make clean && make"
+  fi
   oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/socialNetwork && python3 scripts/init_social_graph.py"
   sleep 120
 }
@@ -187,7 +187,7 @@ scratch_choice=$5
 benchmark_output_path=$6
 on_cluster_client="y"
 benchmark_file_name=""
-benchmark_wrk_version=1
+benchmark_wrk_version=2
 cluster_host_name=".apps.firm.zp7q.p1.openshiftapps.com"
 #Deciding benchmark file name
 set_benchmark_file_name
@@ -201,8 +201,11 @@ echo "Running benchmark for script mode ${input_choice} for thread count: ${thre
 #read -p "Start from scratch? Y/N" scratch_choice
 echo "Please make sure you have logged in to your kubernetes cluster....."
 #Changing config based on choice
-pre_deployment
-deploy_restart_benchmark
-pre_benchmark
+if [[ $scratch_choice == [yY] ]]
+then
+  pre_deployment
+  deploy_restart_benchmark
+  pre_benchmark
+fi
 run_benchmark
 post_benchmark

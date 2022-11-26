@@ -1,7 +1,7 @@
 #!/bin/bash
 
 oc adm policy add-scc-to-group anyuid system:serviceaccounts:istio-system
-istioctl install --set profile=openshift -y
+istioctl install -f istio-operator.yaml -y
 oc -n istio-system expose svc/istio-ingressgateway --port=http2
 oc adm policy add-scc-to-group anyuid system:serviceaccounts:social-network
 oc -n social-network create -f istio-attachment.yaml

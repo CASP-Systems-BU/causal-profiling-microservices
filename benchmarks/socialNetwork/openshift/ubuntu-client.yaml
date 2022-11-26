@@ -20,7 +20,7 @@ spec:
       labels:
         death-star-project: social-network
         app: ubuntu-client
-        micro-service: set-1
+        micro-service: set-3
       name: ubuntu-client
     spec:
 #      affinity:
@@ -36,11 +36,11 @@ spec:
       containers:
       - name: ubuntu-client
         image: ubuntu
-        resources:
-          requests:
-            cpu: 2
-            memory: 2Gi
-            ephemeral-storage: 2Gi
+#        resources:
+#          requests:
+#            cpu: 2
+#            memory: 2Gi
+#            ephemeral-storage: 2Gi
         command:  ["/bin/sh", "-c"]
         args:
           - apt-get -y update &&

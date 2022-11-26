@@ -25,6 +25,10 @@ spec:
       containers:
       - name: hr-client
         image: ubuntu
+        resources:
+          requests:
+            cpu: 2
+            memory: 2Gi
         command:  ["/bin/sh", "-c"]
         args:
           - apt-get -y update &&

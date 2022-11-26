@@ -33,18 +33,9 @@ spec:
       labels:
         death-star-project: social-network
         app: home-timeline-service
+        micro-service: set-1
       name: home-timeline-service
     spec:
-      affinity:
-        podAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: micro-service
-                    operator: In
-                    values:
-                      - set-1
-              topologyKey: kubernetes.io/hostname
       containers:
       - name: home-timeline-service
         image: yg397/social-network-microservices:root_cause-del

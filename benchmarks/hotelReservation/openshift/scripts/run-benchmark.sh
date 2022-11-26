@@ -4,19 +4,19 @@
 set_benchmark_file_name() {
   if [[ $input_choice -eq 1 ]]
   then
-    benchmark_file_name="${benchmark_name}-tcpdump-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-tcpdump-benchmark-${thread_count}-${connections}.log"
   fi
   if [[ $input_choice -eq 2 ]]
   then
-    benchmark_file_name="${benchmark_name}-jaeger-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-jaeger-benchmark-${thread_count}-${connections}.log"
   fi
   if [[ $input_choice -eq 3 ]]
   then
-    benchmark_file_name="${benchmark_name}-no-tracing-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-no-tracing-benchmark-${thread_count}-${connections}.log"
   fi
   if [[ $input_choice -eq 4 ]]
   then
-    benchmark_file_name="${benchmark_name}-istio-benchmark-${total_rps}.log"
+    benchmark_file_name="${benchmark_name}-istio-benchmark-${thread_count}-${connections}.log"
   fi
 }
 
@@ -89,7 +89,14 @@ deploy_restart_benchmark() {
   echo ${ubuntuclient}
 #  oc cp "../../../../benchmarks" social-network/"${ubuntuclient}":/root
   oc exec "$ubuntuclient" -- bash -c "cd /root && git clone https://github.com/CASP-Systems-BU/causal-profiling-microservices.git"
-  oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/hotelReservation/wrk2 && make clean && make"
+  if [[ $benchmark_wrk_version -eq 1 ]]
+  then
+    oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/hotelReservation/wrk && make clean && make"
+  fi
+  if [[ $benchmark_wrk_version -eq 2 ]]
+  then
+    oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/hotelReservation/wrk2 && make clean && make"
+  fi
   sleep 120
 }
 
@@ -144,8 +151,16 @@ run_benchmark() {
   if [[ $on_cluster_client == [yY] ]]
   then
     ubuntuclient=$(oc -n hotel-res get pod | grep ubuntu-client- | cut -f 1 -d " ")
-    oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/hotelReservation/wrk2 && \
-          ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s scripts/hotel-reservation/mixed-workload_type_1.lua http://frontend.hotel-res.svc.cluster.local:5000" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
+    if [[ $benchmark_wrk_version -eq 1 ]]
+    then
+      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/hotelReservation/wrk && \
+            ./wrk -t ${thread_count} -c ${connections} -d ${benchmark_duration}s --latency -s scripts/hotel-reservation/mixed-workload_type_1.lua http://frontend.hotel-res.svc.cluster.local:5000" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
+    fi
+    if [[ $benchmark_wrk_version -eq 2 ]]
+    then
+      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/hotelReservation/wrk2 && \
+            ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P -s scripts/hotel-reservation/mixed-workload_type_1.lua http://frontend.hotel-res.svc.cluster.local:5000" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
+    fi
   fi
   sleep 1m
 }
@@ -162,6 +177,7 @@ benchmark_output_path=$6
 on_cluster_client="y"
 benchmark_file_name=""
 cluster_host_name=".apps.firm.zp7q.p1.openshiftapps.com"
+benchmark_wrk_version=2
 #Deciding benchmark file name
 set_benchmark_file_name
 echo "Benchmark file name: ${benchmark_file_name}"
@@ -174,8 +190,11 @@ echo "Running benchmark for script mode ${input_choice} for thread count: ${thre
 #read -p "Start from scratch? Y/N" scratch_choice
 echo "Please make sure you have logged in to your kubernetes cluster....."
 #Changing config based on choice
-pre_deployment
-deploy_restart_benchmark
-pre_benchmark
+if [[ $scratch_choice == [yY] ]]
+then
+  pre_deployment
+  deploy_restart_benchmark
+  pre_benchmark
+fi
 run_benchmark
-post_benchmark
+#post_benchmark

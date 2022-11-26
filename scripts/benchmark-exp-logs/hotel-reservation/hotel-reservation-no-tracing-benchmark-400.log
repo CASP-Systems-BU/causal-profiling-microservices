@@ -1,0 +1,13 @@
+Running 1m test @ http://frontend.hotel-res.svc.cluster.local:5000
+  1 threads and 3 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.86ms    2.16ms  27.83ms   84.12%
+    Req/Sec     1.16k    86.48     1.45k    68.67%
+  Latency Distribution
+     50%    1.94ms
+     75%    4.01ms
+     90%    5.96ms
+     99%    9.90ms
+  69105 requests in 1.00m, 28.49MB read
+Requests/sec:   1151.54
+Transfer/sec:    486.14KB

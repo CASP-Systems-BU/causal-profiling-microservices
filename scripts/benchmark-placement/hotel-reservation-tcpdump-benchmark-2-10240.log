@@ -1,0 +1,38 @@
+NAME                                     READY   STATUS    RESTARTS      AGE   IP             NODE                          NOMINATED NODE   READINESS GATES
+consul-578d59f6d-jzgsw                   1/1     Running   0             47m   10.128.10.53   ip-10-0-186-99.ec2.internal   <none>           <none>
+frontend-7b7db7d87b-kr8wj                1/1     Running   0             47m   10.128.10.55   ip-10-0-186-99.ec2.internal   <none>           <none>
+geo-68f4b94df5-zs26q                     1/1     Running   0             47m   10.128.10.54   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-4kmhj                             1/1     Running   0             43m   10.128.10.66   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-6gpz6                             1/1     Running   0             43m   10.128.10.60   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-99x7c                             1/1     Running   0             43m   10.128.8.76    ip-10-0-174-11.ec2.internal   <none>           <none>
+ksniff-9z5zk                             1/1     Running   0             43m   10.128.8.77    ip-10-0-174-11.ec2.internal   <none>           <none>
+ksniff-bd9jx                             1/1     Running   0             43m   10.128.8.78    ip-10-0-174-11.ec2.internal   <none>           <none>
+ksniff-bvf4j                             1/1     Running   0             43m   10.128.8.82    ip-10-0-174-11.ec2.internal   <none>           <none>
+ksniff-dn6rg                             1/1     Running   0             43m   10.128.6.70    ip-10-0-153-37.ec2.internal   <none>           <none>
+ksniff-fb57g                             1/1     Running   0             43m   10.128.10.68   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-ftshl                             1/1     Running   0             43m   10.128.8.81    ip-10-0-174-11.ec2.internal   <none>           <none>
+ksniff-hwvkn                             1/1     Running   0             43m   10.128.10.67   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-l845d                             1/1     Running   0             43m   10.128.10.64   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-mhsll                             1/1     Running   0             43m   10.128.10.63   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-p7zr5                             1/1     Running   0             43m   10.128.8.83    ip-10-0-174-11.ec2.internal   <none>           <none>
+ksniff-qfn89                             1/1     Running   0             43m   10.128.10.65   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-rh9vg                             1/1     Running   0             43m   10.128.10.62   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-xm6tf                             1/1     Running   0             43m   10.128.8.79    ip-10-0-174-11.ec2.internal   <none>           <none>
+ksniff-xwqsh                             1/1     Running   0             43m   10.128.10.61   ip-10-0-186-99.ec2.internal   <none>           <none>
+ksniff-xxh62                             1/1     Running   0             43m   10.128.8.80    ip-10-0-174-11.ec2.internal   <none>           <none>
+memcached-profile-67cfbb74fb-5z8rt       1/1     Running   0             47m   10.128.8.67    ip-10-0-174-11.ec2.internal   <none>           <none>
+memcached-rate-7f9f578899-8dnxb          1/1     Running   0             47m   10.128.10.56   ip-10-0-186-99.ec2.internal   <none>           <none>
+memcached-reserve-86b6b48757-lv2wh       1/1     Running   0             47m   10.128.10.52   ip-10-0-186-99.ec2.internal   <none>           <none>
+mongodb-geo-989f7d9cf-qh5xk              1/1     Running   0             47m   10.128.8.74    ip-10-0-174-11.ec2.internal   <none>           <none>
+mongodb-profile-78694f7c69-bwd4g         1/1     Running   0             47m   10.128.10.58   ip-10-0-186-99.ec2.internal   <none>           <none>
+mongodb-rate-5fb88f7758-466p6            1/1     Running   0             47m   10.128.8.73    ip-10-0-174-11.ec2.internal   <none>           <none>
+mongodb-recommendation-7bf7cc589-6l47k   1/1     Running   0             47m   10.128.8.75    ip-10-0-174-11.ec2.internal   <none>           <none>
+mongodb-reservation-f784cdcd-swbbm       1/1     Running   0             47m   10.128.10.59   ip-10-0-186-99.ec2.internal   <none>           <none>
+mongodb-user-767bd687b9-9fddd            1/1     Running   0             47m   10.128.8.72    ip-10-0-174-11.ec2.internal   <none>           <none>
+profile-54689bd75c-vc4z6                 1/1     Running   1 (47m ago)   47m   10.128.8.69    ip-10-0-174-11.ec2.internal   <none>           <none>
+rate-6985cd7b8f-fdtdw                    1/1     Running   0             47m   10.128.8.68    ip-10-0-174-11.ec2.internal   <none>           <none>
+recommendation-66cc6769f6-4zt4k          1/1     Running   1 (47m ago)   47m   10.128.10.57   ip-10-0-186-99.ec2.internal   <none>           <none>
+reservation-6b9f884497-mbmkr             1/1     Running   1 (47m ago)   47m   10.128.6.68    ip-10-0-153-37.ec2.internal   <none>           <none>
+search-5847c6b8bf-kwfs2                  1/1     Running   0             47m   10.128.10.51   ip-10-0-186-99.ec2.internal   <none>           <none>
+ubuntu-client-6f798795bd-kqjrr           1/1     Running   0             47m   10.128.6.69    ip-10-0-153-37.ec2.internal   <none>           <none>
+user-6fcddcc5cd-pk2jb                    1/1     Running   0             47m   10.128.8.70    ip-10-0-174-11.ec2.internal   <none>           <none>

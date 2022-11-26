@@ -1,0 +1,13 @@
+Running 1m test @ http://nginx-thrift.social-network.svc.cluster.local:8080/wrk2-api/user-timeline/read
+  1 threads and 1 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.06ms    7.12ms 209.82ms   99.60%
+    Req/Sec     1.45k    91.85     1.60k    84.67%
+  Latency Distribution
+     50%  670.00us
+     75%  708.00us
+     90%  750.00us
+     99%    0.92ms
+  86883 requests in 1.00m, 16.49MB read
+Requests/sec:   1445.65
+Transfer/sec:    280.94KB

@@ -1,5 +1,4 @@
 #!/bin/bash
-. docker-conf.config
 
 #Config of benchmarks
 #{benchmark_name}_config = (namespace,benchmark_folder,path_to_scripts)
@@ -30,4 +29,5 @@ then
 fi
 benchmark_output_location=$(realpath .)
 #Running appropriate benchmark
-sh ${benchmark_location}/run-benchmark.sh ${thread_count} ${connections} ${benchmark_duration} ${total_rps} ${scratch_choice} ${benchmark_output_location}
+cd ${benchmark_location}
+./run-benchmark.sh ${thread_count} ${connections} ${benchmark_duration} ${total_rps} ${scratch_choice} ${benchmark_output_location} <<< ${input_choice}

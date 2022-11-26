@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world-pod-2
+  labels:                  # You'll use labels A LOT w/ kube
+    death-star-project: hotel-res
+    app: hello-world       # They are useful for organizing and identifying attributes of an object
+  namespace: hotel-res
+spec:
+  containers:              # This spec has multiple containers, how fancy!
+#  - name: hello-world-http
+#    image: busybox
+#    command: ['sh','-c', 'echo "hello world" > index.html && /bin/httpd -p 9000 -f']
+#    resources:
+#      requests:
+#        cpu: 16
+#        memory: 20Gi
+#    ports:                 # A port this container is exposing
+#    - containerPort: 9000
+#      protocol: TCP
+  - name: "k8s-hello-node"
+    image: "rogertinsley/hello-world:v1"
+    resources:
+      requests:
+        cpu: 30
+        memory: 20Gi
+---
+kind: Service              # Services can expose pods to the public
+apiVersion: v1
+metadata:
+  name: hello-world-svc
+  labels:
+    death-star-project: hotel-res
+  namespace: hotel-res
+spec:
+#  type: NodePort
+#  ports:
+#  - port: 80
+#    targetPort: 9000       # The port to target on the container
+#  selector:
+#    app: hello-world
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 8080
+  selector:
+    app: hello-world
+  type: "ClusterIP"

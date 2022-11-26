@@ -1,0 +1,20 @@
+NAME                                     READY   STATUS    RESTARTS        AGE     IP              NODE                           NOMINATED NODE   READINESS GATES
+consul-578d59f6d-vrlw4                   1/1     Running   0               3m59s   10.128.11.117   ip-10-0-189-202.ec2.internal   <none>           <none>
+frontend-7b7db7d87b-jtmh5                1/1     Running   0               4m5s    10.128.11.115   ip-10-0-189-202.ec2.internal   <none>           <none>
+geo-68f4b94df5-5bv64                     1/1     Running   1 (3m47s ago)   4m      10.128.7.54     ip-10-0-239-80.ec2.internal    <none>           <none>
+memcached-profile-67cfbb74fb-ltxlj       1/1     Running   0               4m6s    10.128.11.114   ip-10-0-189-202.ec2.internal   <none>           <none>
+memcached-rate-7f9f578899-qm7gb          1/1     Running   0               3m59s   10.128.9.85     ip-10-0-177-21.ec2.internal    <none>           <none>
+memcached-reserve-86b6b48757-85vh6       1/1     Running   0               4m5s    10.128.9.80     ip-10-0-177-21.ec2.internal    <none>           <none>
+mongodb-geo-989f7d9cf-mf9xk              1/1     Running   0               3m59s   10.128.11.119   ip-10-0-189-202.ec2.internal   <none>           <none>
+mongodb-profile-78694f7c69-9ms8d         1/1     Running   0               4m6s    10.128.11.118   ip-10-0-189-202.ec2.internal   <none>           <none>
+mongodb-rate-5fb88f7758-44nqx            1/1     Running   0               3m59s   10.128.11.120   ip-10-0-189-202.ec2.internal   <none>           <none>
+mongodb-recommendation-7bf7cc589-727rw   1/1     Running   0               4m      10.128.7.58     ip-10-0-239-80.ec2.internal    <none>           <none>
+mongodb-reservation-f784cdcd-j4p4m       1/1     Running   0               4m6s    10.128.7.57     ip-10-0-239-80.ec2.internal    <none>           <none>
+mongodb-user-767bd687b9-j2dg5            1/1     Running   0               4m      10.128.9.86     ip-10-0-177-21.ec2.internal    <none>           <none>
+profile-54689bd75c-6f9zq                 1/1     Running   0               4m      10.128.9.84     ip-10-0-177-21.ec2.internal    <none>           <none>
+rate-6985cd7b8f-75sqb                    1/1     Running   1 (3m47s ago)   3m59s   10.128.7.56     ip-10-0-239-80.ec2.internal    <none>           <none>
+recommendation-66cc6769f6-445ww          1/1     Running   1 (3m48s ago)   4m      10.128.11.116   ip-10-0-189-202.ec2.internal   <none>           <none>
+reservation-6b9f884497-5w9k4             1/1     Running   0               4m5s    10.128.9.81     ip-10-0-177-21.ec2.internal    <none>           <none>
+search-5847c6b8bf-m5rzw                  1/1     Running   0               4m2s    10.128.9.82     ip-10-0-177-21.ec2.internal    <none>           <none>
+ubuntu-client-6f798795bd-nxfgq           1/1     Running   0               4m6s    10.128.7.53     ip-10-0-239-80.ec2.internal    <none>           <none>
+user-6fcddcc5cd-xdqgt                    1/1     Running   1 (3m46s ago)   3m59s   10.128.9.83     ip-10-0-177-21.ec2.internal    <none>           <none>

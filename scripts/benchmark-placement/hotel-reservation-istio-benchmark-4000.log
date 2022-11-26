@@ -1,0 +1,20 @@
+NAME                                     READY   STATUS    RESTARTS        AGE     IP             NODE                           NOMINATED NODE   READINESS GATES
+consul-654ff64b96-vw9w8                  2/2     Running   0               4m1s    10.128.6.75    ip-10-0-186-169.ec2.internal   <none>           <none>
+frontend-7b7db7d87b-288pz                2/2     Running   0               4m3s    10.128.6.73    ip-10-0-186-169.ec2.internal   <none>           <none>
+geo-68f4b94df5-99bls                     2/2     Running   0               3m58s   10.128.10.47   ip-10-0-187-143.ec2.internal   <none>           <none>
+memcached-profile-58bf8588cb-glkxd       2/2     Running   0               4m6s    10.128.6.72    ip-10-0-186-169.ec2.internal   <none>           <none>
+memcached-rate-6bdd8c5ffc-ctdhs          2/2     Running   0               4m3s    10.128.6.74    ip-10-0-186-169.ec2.internal   <none>           <none>
+memcached-reserve-5ff5448b9f-2cjrv       2/2     Running   0               3m59s   10.128.10.45   ip-10-0-187-143.ec2.internal   <none>           <none>
+mongodb-geo-69854dff65-lzwnl             2/2     Running   0               3m59s   10.128.8.70    ip-10-0-211-134.ec2.internal   <none>           <none>
+mongodb-profile-5865d5dfc5-qwzhp         2/2     Running   0               3m59s   10.128.10.48   ip-10-0-187-143.ec2.internal   <none>           <none>
+mongodb-rate-6f7767c6f6-5xllf            2/2     Running   0               3m59s   10.128.8.67    ip-10-0-211-134.ec2.internal   <none>           <none>
+mongodb-recommendation-6b5458b59-4vptl   2/2     Running   0               3m58s   10.128.8.69    ip-10-0-211-134.ec2.internal   <none>           <none>
+mongodb-reservation-788bd6b94d-6tzfv     2/2     Running   0               4m      10.128.6.79    ip-10-0-186-169.ec2.internal   <none>           <none>
+mongodb-user-64bb996cc5-gzbkr            2/2     Running   0               3m59s   10.128.8.68    ip-10-0-211-134.ec2.internal   <none>           <none>
+profile-54689bd75c-ttfmm                 2/2     Running   1 (3m43s ago)   3m59s   10.128.6.77    ip-10-0-186-169.ec2.internal   <none>           <none>
+rate-6985cd7b8f-qfb2q                    2/2     Running   0               3m58s   10.128.8.66    ip-10-0-211-134.ec2.internal   <none>           <none>
+recommendation-66cc6769f6-kmvkf          2/2     Running   0               4m      10.128.6.76    ip-10-0-186-169.ec2.internal   <none>           <none>
+reservation-6b9f884497-h6xmg             2/2     Running   1 (3m44s ago)   3m59s   10.128.6.78    ip-10-0-186-169.ec2.internal   <none>           <none>
+search-5847c6b8bf-rmwgk                  2/2     Running   1 (3m55s ago)   4m1s    10.128.8.65    ip-10-0-211-134.ec2.internal   <none>           <none>
+ubuntu-client-6c684b97db-wj95m           2/2     Running   1 (3m46s ago)   4m1s    10.128.8.63    ip-10-0-211-134.ec2.internal   <none>           <none>
+user-6fcddcc5cd-g8qz7                    2/2     Running   0               4m1s    10.128.8.64    ip-10-0-211-134.ec2.internal   <none>           <none>
