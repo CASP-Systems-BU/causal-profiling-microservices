@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    death-star-project: online-boutique
+    app-name: jaeger-collector
+  namespace: online-boutique
+  name: jaeger-collector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      death-star-project: online-boutique
+      app-name: jaeger-collector
+  strategy: {}
+  template:
+    metadata:
+      name: jaeger-collector
+      labels:
+        death-star-project: online-boutique
+        app-name: jaeger-collector
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      containers:
+      - image: jaegertracing/all-in-one:latest
+        name: jaeger-collector
+        ports:
+        - containerPort: 14269
+        - containerPort: 5778
+        - containerPort: 14268
+        - containerPort: 14267
+        - containerPort: 16686
+        - containerPort: 5775
+          protocol: UDP
+        - containerPort: 6831
+          protocol: UDP
+        - containerPort: 6832
+          protocol: UDP
+        resources: {}
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+status: {}
