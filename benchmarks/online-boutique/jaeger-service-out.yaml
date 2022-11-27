@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger-out
+  labels:
+    death-star-project: online-boutique
+    app-name: jaeger-collector
+  namespace: online-boutique
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 16686
+  selector:
+    death-star-project: online-boutique
+    app-name: jaeger-collector

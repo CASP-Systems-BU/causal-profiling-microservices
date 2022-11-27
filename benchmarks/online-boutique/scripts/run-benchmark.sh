@@ -140,12 +140,12 @@ run_benchmark() {
     if [[ $benchmark_wrk_version -eq 1 ]]
     then
       oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/online-boutique/wrk && \
-            ./wrk -t ${thread_count} -c ${connections} -d ${benchmark_duration}s --latency http://frontend.online-boutique.svc.cluster.local:80" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
+            ./wrk -t ${thread_count} -c ${connections} -d ${benchmark_duration}s --latency http://frontend.online-boutique.svc.cluster.local" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
     fi
     if [[ $benchmark_wrk_version -eq 2 ]]
     then
-      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/hotelReservation/wrk2 && \
-            ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P http://frontend.online-boutique.svc.cluster.local:5000" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
+      oc exec "$ubuntuclient" -- bash -c "cd /root/causal-profiling-microservices/benchmarks/online-boutique/wrk2 && \
+            ./wrk -D exp -t ${thread_count} -c ${connections} -d ${benchmark_duration}s -R ${total_rps} -L -P http://frontend.online-boutique.svc.cluster.local" > ${benchmark_output_path}/benchmark-exp-logs/${benchmark_file_name}
     fi
   fi
   sleep 1m
